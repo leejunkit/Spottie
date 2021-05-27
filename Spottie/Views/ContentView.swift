@@ -7,10 +7,18 @@
 
 import SwiftUI
 
+enum Screen: Hashable {
+   case home, search, library
+}
+
 struct ContentView: View {
+    @State var screen: Screen? = .home
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            Sidebar(state: $screen)
+        }
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
