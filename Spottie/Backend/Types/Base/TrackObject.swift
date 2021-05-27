@@ -9,9 +9,9 @@ struct TrackObject: Codable {
     var gid: String
     var name: String
     var album: AlbumObject
-    var artist: ArtistObject
+    var artist: [ArtistObject]
     var number: Int
     var discNumber: Int
     var duration: Int
-    var popularity: Int    
+    var popularity: Int
 }

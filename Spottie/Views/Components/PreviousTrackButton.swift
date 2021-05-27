@@ -7,14 +7,24 @@
 
 import SwiftUI
 
-struct PreviousTrackButton: View {
+struct PreviousTrackButton<M: PlayerStateProtocol>: View {
+    @EnvironmentObject var viewModel: M
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            viewModel.onPreviousTrackButtonTapped()
+        }) {
+            Image(systemName: "backward.end.fill")
+                .resizable()
+                .frame(width: 12, height: 12)
+        }
+        .buttonStyle(BorderlessButtonStyle())
     }
 }
 
 struct PreviousTrackButton_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousTrackButton()
+        PreviousTrackButton<FakePlayerViewModel>()
+            .environmentObject(FakePlayerViewModel())
     }
 }

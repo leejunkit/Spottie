@@ -7,14 +7,24 @@
 
 import SwiftUI
 
-struct BottomBar: View {
+struct BottomBar<M: PlayerStateProtocol>: View {
+    @EnvironmentObject var viewModel: M
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 40) {
+            NowPlaying(
+                trackName: viewModel.trackName,
+                artistName: viewModel.artistName,
+                artworkURL: viewModel.artworkURL
+            )
+            .frame(width: 240, alignment: .leading)
+            PlayerControls<M>()
+        }
     }
 }
 
 struct BottomBar_Previews: PreviewProvider {
     static var previews: some View {
-        BottomBar()
+        BottomBar<FakePlayerViewModel>()
+            .environmentObject(FakePlayerViewModel())
     }
 }

@@ -6,15 +6,29 @@
 //
 
 import SwiftUI
+import Combine
 
-struct PlayPauseButton: View {
+struct PlayPauseButton<M: PlayerStateProtocol>: View {
+    @EnvironmentObject var viewModel: M
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            viewModel.onPlayPauseButtonTapped()
+        }) {
+            Image(systemName: viewModel.isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                .resizable()
+                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                .frame(width: 32, height: 32)
+        }
+        .buttonStyle(BorderlessButtonStyle())
     }
 }
 
 struct PlayPauseButton_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
-        PlayPauseButton()
+        PlayPauseButton<FakePlayerViewModel>()
+            .environmentObject(FakePlayerViewModel())
     }
 }

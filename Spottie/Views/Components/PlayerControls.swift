@@ -7,14 +7,27 @@
 
 import SwiftUI
 
-struct PlayerControls: View {
+struct PlayerControls<M: PlayerStateProtocol>: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack(spacing: 28) {
+                ShuffleButton()
+                PreviousTrackButton<M>()
+                PlayPauseButton<M>()
+                NextTrackButton<M>()
+                RepeatButton()
+            }
+            TrackProgressSlider()
+                .padding(.leading)
+                .padding(.trailing)
+        }
     }
 }
 
 struct PlayerControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerControls()
+        PlayerControls<FakePlayerViewModel>()
+            .environmentObject(FakePlayerViewModel())
     }
 }
+

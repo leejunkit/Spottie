@@ -11,19 +11,25 @@ enum Screen: Hashable {
    case home, search, library
 }
 
-struct ContentView: View {
+struct ContentView<M: PlayerStateProtocol>: View {
     @State var screen: Screen? = .home
     
     var body: some View {
-        NavigationView {
-            Sidebar(state: $screen)
+        VStack {
+            NavigationView {
+                Sidebar(state: $screen)
+            }
+            .navigationViewStyle(DoubleColumnNavigationViewStyle())
+            BottomBar<M>()
+                .frame(height: 66)
+                .padding()
         }
-        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView<FakePlayerViewModel>()
+            .environmentObject(FakePlayerViewModel())
     }
 }

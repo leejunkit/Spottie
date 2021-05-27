@@ -8,13 +8,42 @@
 import SwiftUI
 
 struct Sidebar: View {
+    @Binding var state: Screen?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            NavigationLink(
+                destination: Home<PlayerViewModel>(),
+                tag: Screen.home,
+                selection: $state,
+                label: {
+                    Label("Home", systemImage: "house" )
+                }
+            )
+            NavigationLink(
+                destination: Search(),
+                tag: Screen.search,
+                selection: $state,
+                label: {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            )
+            NavigationLink(
+                destination: Library(),
+                tag: Screen.library,
+                selection: $state,
+                label: {
+                    Label("Library", systemImage: "book")
+                }
+            )
+        }
+        .listStyle(SidebarListStyle())
+        .navigationTitle("Spottie")
     }
 }
 
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
-        Sidebar()
+        Sidebar(state: .constant(.home))
     }
 }

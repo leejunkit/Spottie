@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SpottieApp: App {
+    @StateObject private var playerViewModel = PlayerViewModel(EventBroker())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView<PlayerViewModel>()
+                .environmentObject(playerViewModel)
         }
     }
 }

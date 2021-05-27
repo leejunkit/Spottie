@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-struct Home: View {
+struct Home<M: PlayerStateProtocol>: View {
+    @EnvironmentObject var viewModel: M
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("\(viewModel.trackName) by \(viewModel.artistName)")
     }
 }
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Home<FakePlayerViewModel>()
+            .environmentObject(FakePlayerViewModel())
     }
 }

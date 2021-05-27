@@ -6,3 +6,17 @@
 //
 
 import Foundation
+import Combine
+
+protocol PlayerStateProtocol: ObservableObject {
+    var isPlaying: Bool { get set }
+    var trackName: String { get set }
+    var artistName: String { get set }
+    var artworkURL: URL? { get set }
+    var durationMs: Int { get set }
+    var progressMs: Int { get set }
+    
+    func onPlayPauseButtonTapped() -> Void
+    func onNextTrackButtonTapped() -> Void
+    func onPreviousTrackButtonTapped() -> Void
+}

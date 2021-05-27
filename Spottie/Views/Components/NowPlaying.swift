@@ -6,10 +6,30 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct NowPlaying: View {
+    var trackName = ""
+    var artistName = ""
+    var artworkURL: URL?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 12) {
+            WebImage(url: artworkURL)
+                .resizable()
+                .frame(width: 56, height: 56)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(trackName)
+                Text(artistName)
+                    .foregroundColor(.secondary)
+            }
+            Button(action: {
+                print("Like button was tapped")
+            }) {
+                Image(systemName: "heart")
+            }
+            .buttonStyle(BorderlessButtonStyle())
+        }
     }
 }
 

@@ -3,17 +3,74 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470201B1265B54720030ECA9 /* WebAPISimplifiedAlbumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201B0265B54720030ECA9 /* WebAPISimplifiedAlbumObject.swift */; };
+		470201B3265B55F30030ECA9 /* WebAPISimplifiedArtistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201B2265B55F30030ECA9 /* WebAPISimplifiedArtistObject.swift */; };
+		470201B5265B56350030ECA9 /* WebAPIImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201B4265B56350030ECA9 /* WebAPIImageObject.swift */; };
+		470201B7265B56860030ECA9 /* WebAPIArtistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201B6265B56860030ECA9 /* WebAPIArtistObject.swift */; };
+		470201BB265B7C190030ECA9 /* PlayerStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201BA265B7C190030ECA9 /* PlayerStateProtocol.swift */; };
+		470201BD265B80970030ECA9 /* FakePlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201BC265B80970030ECA9 /* FakePlayerViewModel.swift */; };
+		470201BF265BB4320030ECA9 /* PreviousTrackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201BE265BB4320030ECA9 /* PreviousTrackButton.swift */; };
+		470201C1265BB43C0030ECA9 /* NextTrackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201C0265BB43C0030ECA9 /* NextTrackButton.swift */; };
+		470201C3265CF29B0030ECA9 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201C2265CF29B0030ECA9 /* NowPlaying.swift */; };
+		470201C6265CF4560030ECA9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 470201C5265CF4560030ECA9 /* SDWebImageSwiftUI */; };
+		470201C8265CF8D90030ECA9 /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201C7265CF8D90030ECA9 /* PlayerControls.swift */; };
+		470201CA265CF9380030ECA9 /* ShuffleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201C9265CF9380030ECA9 /* ShuffleButton.swift */; };
+		470201CC265CF9610030ECA9 /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201CB265CF9610030ECA9 /* RepeatButton.swift */; };
+		470201CE265DE8720030ECA9 /* TrackProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470201CD265DE8720030ECA9 /* TrackProgressSlider.swift */; };
 		4730614E265656ED001E3A1F /* SpottieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730614D265656ED001E3A1F /* SpottieApp.swift */; };
 		47306150265656ED001E3A1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730614F265656ED001E3A1F /* ContentView.swift */; };
 		47306152265656EF001E3A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47306151265656EF001E3A1F /* Assets.xcassets */; };
 		47306155265656EF001E3A1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47306154265656EF001E3A1F /* Preview Assets.xcassets */; };
+		4730615F2656573B001E3A1F /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730615E2656573B001E3A1F /* Sidebar.swift */; };
+		473061612656580F001E3A1F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061602656580F001E3A1F /* Home.swift */; };
+		4730616326565828001E3A1F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730616226565828001E3A1F /* Search.swift */; };
+		4730616526565841001E3A1F /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730616426565841001E3A1F /* Library.swift */; };
+		4730616826565B03001E3A1F /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730616726565B03001E3A1F /* PlayPauseButton.swift */; };
+		4730616A26565BB7001E3A1F /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730616926565BB7001E3A1F /* BottomBar.swift */; };
+		4730616D26565ED1001E3A1F /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730616C26565ED1001E3A1F /* HTTPClient.swift */; };
+		4730616F26566076001E3A1F /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730616E26566076001E3A1F /* SpotifyAPI.swift */; };
+		473061722656629F001E3A1F /* Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061712656629F001E3A1F /* Nothing.swift */; };
+		4730617426587EF6001E3A1F /* WebsocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730617326587EF6001E3A1F /* WebsocketClient.swift */; };
+		4730617726588C51001E3A1F /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730617626588C51001E3A1F /* PlayerViewModel.swift */; };
+		473061792658A02E001E3A1F /* SpotifyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061782658A02E001E3A1F /* SpotifyEvent.swift */; };
+		4730617B265903A6001E3A1F /* EventBroker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730617A265903A6001E3A1F /* EventBroker.swift */; };
+		4730618326590931001E3A1F /* TrackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730618226590931001E3A1F /* TrackObject.swift */; };
+		473061852659164E001E3A1F /* AlbumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061842659164E001E3A1F /* AlbumObject.swift */; };
+		4730618726591DF7001E3A1F /* ArtistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730618626591DF7001E3A1F /* ArtistObject.swift */; };
+		4730618926591E16001E3A1F /* DateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730618826591E16001E3A1F /* DateObject.swift */; };
+		4730618B26591E36001E3A1F /* CoverGroupObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730618A26591E36001E3A1F /* CoverGroupObject.swift */; };
+		4730618D26591E50001E3A1F /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730618C26591E50001E3A1F /* ImageObject.swift */; };
+		4730618F26591E9C001E3A1F /* ContextChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730618E26591E9C001E3A1F /* ContextChangedEvent.swift */; };
+		4730619326591EE1001E3A1F /* TrackChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730619226591EE1001E3A1F /* TrackChangedEvent.swift */; };
+		4730619526591EF9001E3A1F /* PlaybackResumedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730619426591EF9001E3A1F /* PlaybackResumedEvent.swift */; };
+		4730619726591F14001E3A1F /* MetadataAvailableEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730619626591F14001E3A1F /* MetadataAvailableEvent.swift */; };
+		4730619926591F92001E3A1F /* VolumeChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730619826591F92001E3A1F /* VolumeChangedEvent.swift */; };
+		4730619B26591FFC001E3A1F /* TrackSeekedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730619A26591FFC001E3A1F /* TrackSeekedEvent.swift */; };
+		4730619D26592023001E3A1F /* PlaybackPausedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730619C26592023001E3A1F /* PlaybackPausedEvent.swift */; };
+		4730619F26592046001E3A1F /* InactiveSessionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730619E26592046001E3A1F /* InactiveSessionEvent.swift */; };
+		473061A12659218F001E3A1F /* SpottieError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061A02659218F001E3A1F /* SpottieError.swift */; };
+		473061A42659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061A32659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift */; };
+		473061A6265B4A10001E3A1F /* WebAPITrackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061A5265B4A10001E3A1F /* WebAPITrackObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		470201B0265B54720030ECA9 /* WebAPISimplifiedAlbumObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPISimplifiedAlbumObject.swift; sourceTree = "<group>"; };
+		470201B2265B55F30030ECA9 /* WebAPISimplifiedArtistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPISimplifiedArtistObject.swift; sourceTree = "<group>"; };
+		470201B4265B56350030ECA9 /* WebAPIImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIImageObject.swift; sourceTree = "<group>"; };
+		470201B6265B56860030ECA9 /* WebAPIArtistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIArtistObject.swift; sourceTree = "<group>"; };
+		470201BA265B7C190030ECA9 /* PlayerStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateProtocol.swift; sourceTree = "<group>"; };
+		470201BC265B80970030ECA9 /* FakePlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePlayerViewModel.swift; sourceTree = "<group>"; };
+		470201BE265BB4320030ECA9 /* PreviousTrackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousTrackButton.swift; sourceTree = "<group>"; };
+		470201C0265BB43C0030ECA9 /* NextTrackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTrackButton.swift; sourceTree = "<group>"; };
+		470201C2265CF29B0030ECA9 /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
+		470201C7265CF8D90030ECA9 /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
+		470201C9265CF9380030ECA9 /* ShuffleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleButton.swift; sourceTree = "<group>"; };
+		470201CB265CF9610030ECA9 /* RepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
+		470201CD265DE8720030ECA9 /* TrackProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackProgressSlider.swift; sourceTree = "<group>"; };
 		4730614A265656ED001E3A1F /* Spottie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spottie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4730614D265656ED001E3A1F /* SpottieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpottieApp.swift; sourceTree = "<group>"; };
 		4730614F265656ED001E3A1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -21,6 +78,36 @@
 		47306154265656EF001E3A1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		47306156265656EF001E3A1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47306157265656EF001E3A1F /* Spottie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spottie.entitlements; sourceTree = "<group>"; };
+		4730615E2656573B001E3A1F /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		473061602656580F001E3A1F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		4730616226565828001E3A1F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		4730616426565841001E3A1F /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		4730616726565B03001E3A1F /* PlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
+		4730616926565BB7001E3A1F /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		4730616C26565ED1001E3A1F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		4730616E26566076001E3A1F /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
+		473061712656629F001E3A1F /* Nothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nothing.swift; sourceTree = "<group>"; };
+		4730617326587EF6001E3A1F /* WebsocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketClient.swift; sourceTree = "<group>"; };
+		4730617626588C51001E3A1F /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		473061782658A02E001E3A1F /* SpotifyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyEvent.swift; sourceTree = "<group>"; };
+		4730617A265903A6001E3A1F /* EventBroker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBroker.swift; sourceTree = "<group>"; };
+		4730618226590931001E3A1F /* TrackObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackObject.swift; sourceTree = "<group>"; };
+		473061842659164E001E3A1F /* AlbumObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumObject.swift; sourceTree = "<group>"; };
+		4730618626591DF7001E3A1F /* ArtistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistObject.swift; sourceTree = "<group>"; };
+		4730618826591E16001E3A1F /* DateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateObject.swift; sourceTree = "<group>"; };
+		4730618A26591E36001E3A1F /* CoverGroupObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverGroupObject.swift; sourceTree = "<group>"; };
+		4730618C26591E50001E3A1F /* ImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
+		4730618E26591E9C001E3A1F /* ContextChangedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextChangedEvent.swift; sourceTree = "<group>"; };
+		4730619226591EE1001E3A1F /* TrackChangedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackChangedEvent.swift; sourceTree = "<group>"; };
+		4730619426591EF9001E3A1F /* PlaybackResumedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackResumedEvent.swift; sourceTree = "<group>"; };
+		4730619626591F14001E3A1F /* MetadataAvailableEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataAvailableEvent.swift; sourceTree = "<group>"; };
+		4730619826591F92001E3A1F /* VolumeChangedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeChangedEvent.swift; sourceTree = "<group>"; };
+		4730619A26591FFC001E3A1F /* TrackSeekedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSeekedEvent.swift; sourceTree = "<group>"; };
+		4730619C26592023001E3A1F /* PlaybackPausedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackPausedEvent.swift; sourceTree = "<group>"; };
+		4730619E26592046001E3A1F /* InactiveSessionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveSessionEvent.swift; sourceTree = "<group>"; };
+		473061A02659218F001E3A1F /* SpottieError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpottieError.swift; sourceTree = "<group>"; };
+		473061A32659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentlyPlayingContextObject.swift; sourceTree = "<group>"; };
+		473061A5265B4A10001E3A1F /* WebAPITrackObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPITrackObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				470201C6265CF4560030ECA9 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,8 +141,10 @@
 		4730614C265656ED001E3A1F /* Spottie */ = {
 			isa = PBXGroup;
 			children = (
+				4730616B26565EB8001E3A1F /* Backend */,
+				4730617526588C40001E3A1F /* ViewModels */,
+				4730615D26565706001E3A1F /* Views */,
 				4730614D265656ED001E3A1F /* SpottieApp.swift */,
-				4730614F265656ED001E3A1F /* ContentView.swift */,
 				47306151265656EF001E3A1F /* Assets.xcassets */,
 				47306156265656EF001E3A1F /* Info.plist */,
 				47306157265656EF001E3A1F /* Spottie.entitlements */,
@@ -69,6 +159,111 @@
 				47306154265656EF001E3A1F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4730615D26565706001E3A1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4730616626565AF8001E3A1F /* Components */,
+				4730614F265656ED001E3A1F /* ContentView.swift */,
+				4730615E2656573B001E3A1F /* Sidebar.swift */,
+				473061602656580F001E3A1F /* Home.swift */,
+				4730616226565828001E3A1F /* Search.swift */,
+				4730616426565841001E3A1F /* Library.swift */,
+				4730616926565BB7001E3A1F /* BottomBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4730616626565AF8001E3A1F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				470201C9265CF9380030ECA9 /* ShuffleButton.swift */,
+				4730616726565B03001E3A1F /* PlayPauseButton.swift */,
+				470201BE265BB4320030ECA9 /* PreviousTrackButton.swift */,
+				470201C0265BB43C0030ECA9 /* NextTrackButton.swift */,
+				470201CB265CF9610030ECA9 /* RepeatButton.swift */,
+				470201C2265CF29B0030ECA9 /* NowPlaying.swift */,
+				470201C7265CF8D90030ECA9 /* PlayerControls.swift */,
+				470201CD265DE8720030ECA9 /* TrackProgressSlider.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4730616B26565EB8001E3A1F /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				4730617026566280001E3A1F /* Types */,
+				4730616C26565ED1001E3A1F /* HTTPClient.swift */,
+				4730617326587EF6001E3A1F /* WebsocketClient.swift */,
+				4730616E26566076001E3A1F /* SpotifyAPI.swift */,
+				4730617A265903A6001E3A1F /* EventBroker.swift */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		4730617026566280001E3A1F /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				4730619126591EAC001E3A1F /* Base */,
+				4730619026591EA6001E3A1F /* Events */,
+				473061A22659FFDD001E3A1F /* API */,
+				473061712656629F001E3A1F /* Nothing.swift */,
+				473061782658A02E001E3A1F /* SpotifyEvent.swift */,
+				473061A02659218F001E3A1F /* SpottieError.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		4730617526588C40001E3A1F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				470201BA265B7C190030ECA9 /* PlayerStateProtocol.swift */,
+				4730617626588C51001E3A1F /* PlayerViewModel.swift */,
+				470201BC265B80970030ECA9 /* FakePlayerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4730619026591EA6001E3A1F /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4730618E26591E9C001E3A1F /* ContextChangedEvent.swift */,
+				4730619226591EE1001E3A1F /* TrackChangedEvent.swift */,
+				4730619426591EF9001E3A1F /* PlaybackResumedEvent.swift */,
+				4730619626591F14001E3A1F /* MetadataAvailableEvent.swift */,
+				4730619826591F92001E3A1F /* VolumeChangedEvent.swift */,
+				4730619A26591FFC001E3A1F /* TrackSeekedEvent.swift */,
+				4730619C26592023001E3A1F /* PlaybackPausedEvent.swift */,
+				4730619E26592046001E3A1F /* InactiveSessionEvent.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4730619126591EAC001E3A1F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4730618226590931001E3A1F /* TrackObject.swift */,
+				473061842659164E001E3A1F /* AlbumObject.swift */,
+				4730618626591DF7001E3A1F /* ArtistObject.swift */,
+				4730618826591E16001E3A1F /* DateObject.swift */,
+				4730618A26591E36001E3A1F /* CoverGroupObject.swift */,
+				4730618C26591E50001E3A1F /* ImageObject.swift */,
+				473061A5265B4A10001E3A1F /* WebAPITrackObject.swift */,
+				470201B0265B54720030ECA9 /* WebAPISimplifiedAlbumObject.swift */,
+				470201B2265B55F30030ECA9 /* WebAPISimplifiedArtistObject.swift */,
+				470201B4265B56350030ECA9 /* WebAPIImageObject.swift */,
+				470201B6265B56860030ECA9 /* WebAPIArtistObject.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		473061A22659FFDD001E3A1F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				473061A32659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +282,9 @@
 			dependencies = (
 			);
 			name = Spottie;
+			packageProductDependencies = (
+				470201C5265CF4560030ECA9 /* SDWebImageSwiftUI */,
+			);
 			productName = Spottie;
 			productReference = 4730614A265656ED001E3A1F /* Spottie.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +312,9 @@
 				Base,
 			);
 			mainGroup = 47306141265656ED001E3A1F;
+			packageReferences = (
+				470201C4265CF4560030ECA9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 4730614B265656ED001E3A1F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,7 +342,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				47306150265656ED001E3A1F /* ContentView.swift in Sources */,
+				473061792658A02E001E3A1F /* SpotifyEvent.swift in Sources */,
+				470201BD265B80970030ECA9 /* FakePlayerViewModel.swift in Sources */,
+				4730618326590931001E3A1F /* TrackObject.swift in Sources */,
+				470201BB265B7C190030ECA9 /* PlayerStateProtocol.swift in Sources */,
+				4730615F2656573B001E3A1F /* Sidebar.swift in Sources */,
+				470201CC265CF9610030ECA9 /* RepeatButton.swift in Sources */,
+				4730618B26591E36001E3A1F /* CoverGroupObject.swift in Sources */,
+				4730618926591E16001E3A1F /* DateObject.swift in Sources */,
+				4730616826565B03001E3A1F /* PlayPauseButton.swift in Sources */,
+				4730616326565828001E3A1F /* Search.swift in Sources */,
+				4730618726591DF7001E3A1F /* ArtistObject.swift in Sources */,
+				470201BF265BB4320030ECA9 /* PreviousTrackButton.swift in Sources */,
+				470201C3265CF29B0030ECA9 /* NowPlaying.swift in Sources */,
+				4730616A26565BB7001E3A1F /* BottomBar.swift in Sources */,
+				473061722656629F001E3A1F /* Nothing.swift in Sources */,
+				473061A12659218F001E3A1F /* SpottieError.swift in Sources */,
+				4730616F26566076001E3A1F /* SpotifyAPI.swift in Sources */,
+				473061A42659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift in Sources */,
+				4730616D26565ED1001E3A1F /* HTTPClient.swift in Sources */,
+				4730618D26591E50001E3A1F /* ImageObject.swift in Sources */,
+				470201C8265CF8D90030ECA9 /* PlayerControls.swift in Sources */,
+				4730619B26591FFC001E3A1F /* TrackSeekedEvent.swift in Sources */,
+				470201B1265B54720030ECA9 /* WebAPISimplifiedAlbumObject.swift in Sources */,
+				470201B5265B56350030ECA9 /* WebAPIImageObject.swift in Sources */,
+				4730617426587EF6001E3A1F /* WebsocketClient.swift in Sources */,
+				473061612656580F001E3A1F /* Home.swift in Sources */,
+				470201C1265BB43C0030ECA9 /* NextTrackButton.swift in Sources */,
+				470201CE265DE8720030ECA9 /* TrackProgressSlider.swift in Sources */,
+				4730619F26592046001E3A1F /* InactiveSessionEvent.swift in Sources */,
 				4730614E265656ED001E3A1F /* SpottieApp.swift in Sources */,
+				4730617726588C51001E3A1F /* PlayerViewModel.swift in Sources */,
+				470201B3265B55F30030ECA9 /* WebAPISimplifiedArtistObject.swift in Sources */,
+				470201B7265B56860030ECA9 /* WebAPIArtistObject.swift in Sources */,
+				473061A6265B4A10001E3A1F /* WebAPITrackObject.swift in Sources */,
+				473061852659164E001E3A1F /* AlbumObject.swift in Sources */,
+				4730619D26592023001E3A1F /* PlaybackPausedEvent.swift in Sources */,
+				4730618F26591E9C001E3A1F /* ContextChangedEvent.swift in Sources */,
+				4730616526565841001E3A1F /* Library.swift in Sources */,
+				4730619926591F92001E3A1F /* VolumeChangedEvent.swift in Sources */,
+				4730619726591F14001E3A1F /* MetadataAvailableEvent.swift in Sources */,
+				4730617B265903A6001E3A1F /* EventBroker.swift in Sources */,
+				470201CA265CF9380030ECA9 /* ShuffleButton.swift in Sources */,
+				4730619326591EE1001E3A1F /* TrackChangedEvent.swift in Sources */,
+				4730619526591EF9001E3A1F /* PlaybackResumedEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +573,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		470201C4265CF4560030ECA9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		470201C5265CF4560030ECA9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 470201C4265CF4560030ECA9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 47306142265656ED001E3A1F /* Project object */;
 }

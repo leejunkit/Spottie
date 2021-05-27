@@ -8,7 +8,7 @@
 struct AlbumObject: Codable {
     var gid: String
     var name: String
-    var artist: ArtistObject
+    var artist: [ArtistObject]
     var label: String
     var date: DateObject
     var coverGroup: CoverGroupObject
