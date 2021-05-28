@@ -16,7 +16,7 @@ final class FakePlayerViewModel: PlayerStateProtocol {
     var artistName = "Artist Name"
     var artworkURL = URL(string: "https://i.scdn.co/image/ab67616d00004851a48964b5d9a3d6968ae3e0de")
     
-    func onPlayPauseButtonTapped() {}
-    func onNextTrackButtonTapped() {}
-    func onPreviousTrackButtonTapped() {}
+    func previousTrack() {}
+    func nextTrack() {}
+    func togglePlayPause() {}
 }

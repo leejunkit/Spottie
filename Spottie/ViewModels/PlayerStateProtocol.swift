@@ -16,7 +16,7 @@ protocol PlayerStateProtocol: ObservableObject {
     var durationMs: Int { get set }
     var progressMs: Int { get set }
     
-    func onPlayPauseButtonTapped() -> Void
-    func onNextTrackButtonTapped() -> Void
-    func onPreviousTrackButtonTapped() -> Void
+    func togglePlayPause() -> Void
+    func nextTrack() -> Void
+    func previousTrack() -> Void
 }

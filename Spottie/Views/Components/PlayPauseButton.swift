@@ -8,14 +8,15 @@
 import SwiftUI
 import Combine
 
-struct PlayPauseButton<M: PlayerStateProtocol>: View {
-    @EnvironmentObject var viewModel: M
+struct PlayPauseButton: View {
+    var playPauseButtonTapped: () -> Void
+    var isPlaying: Bool
     
     var body: some View {
         Button(action: {
-            viewModel.onPlayPauseButtonTapped()
+            playPauseButtonTapped()
         }) {
-            Image(systemName: viewModel.isPlaying ? "pause.circle.fill" : "play.circle.fill")
+            Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
                 .resizable()
                 .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 .frame(width: 32, height: 32)
@@ -25,10 +26,14 @@ struct PlayPauseButton<M: PlayerStateProtocol>: View {
 }
 
 struct PlayPauseButton_Previews: PreviewProvider {
-    
+    static func playPauseButtonTapped() {
+        print("playPauseButtonTapped")
+    }
     
     static var previews: some View {
-        PlayPauseButton<FakePlayerViewModel>()
-            .environmentObject(FakePlayerViewModel())
+        PlayPauseButton(
+            playPauseButtonTapped: playPauseButtonTapped,
+            isPlaying: true
+        )
     }
 }

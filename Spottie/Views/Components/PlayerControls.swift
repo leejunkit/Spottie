@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct PlayerControls<M: PlayerStateProtocol>: View {
+    @EnvironmentObject var viewModel: M
+
     var body: some View {
         VStack {
             HStack(spacing: 28) {
                 ShuffleButton()
-                PreviousTrackButton<M>()
-                PlayPauseButton<M>()
-                NextTrackButton<M>()
+                PreviousTrackButton(
+                    previousTrackButtonTapped: viewModel.previousTrack
+                )
+                PlayPauseButton(
+                    playPauseButtonTapped: viewModel.togglePlayPause,
+                    isPlaying: viewModel.isPlaying
+                )
+                NextTrackButton(
+                    nextTrackButtonTapped: viewModel.nextTrack
+                )
                 RepeatButton()
             }
-            TrackProgressSlider()
+            TrackProgressSlider(viewModel: TrackProgressSlider.ViewModel(isPlaying: viewModel.isPlaying, progressMs: viewModel.progressMs, durationMs: viewModel.durationMs))
                 .padding(.leading)
                 .padding(.trailing)
         }

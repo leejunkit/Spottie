@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-struct NextTrackButton<M: PlayerStateProtocol>: View {
-    @EnvironmentObject var viewModel: M
-
+struct NextTrackButton: View {
+    var nextTrackButtonTapped: () -> Void
     var body: some View {
         Button(action: {
-            viewModel.onNextTrackButtonTapped()
+            self.nextTrackButtonTapped()
         }) {
             Image(systemName: "forward.end.fill")
                 .resizable()
@@ -23,8 +22,10 @@ struct NextTrackButton<M: PlayerStateProtocol>: View {
 }
 
 struct NextTrackButton_Previews: PreviewProvider {
+    static func nextTrackButtonTapped() {
+        print("nextTrackButtonTapped")
+    }
     static var previews: some View {
-        NextTrackButton<FakePlayerViewModel>()
-            .environmentObject(FakePlayerViewModel())
+        NextTrackButton(nextTrackButtonTapped: nextTrackButtonTapped)
     }
 }

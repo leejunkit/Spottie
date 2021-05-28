@@ -8,40 +8,32 @@
 import SwiftUI
 
 struct TrackProgressSlider: View {
-    @State var isPlaying = true
-    @State var progressMs = 0
-    @State var durationMs = 60000
-    @State var progressPercent = 0.0
-
+    @ObservedObject var viewModel: TrackProgressSlider.ViewModel
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var prettyProgress: String {
         get {
-            return TrackProgressSlider.DurationFormatter.shared().string(from: Double(self.progressMs) / 1000.0)!
+            return TrackProgressSlider.DurationFormatter.shared().string(from: Double(self.viewModel.progressMs) / 1000.0)!
         }
     }
     
     var prettyDuration: String {
         get {
-            return TrackProgressSlider.DurationFormatter.shared().string(from: Double(self.durationMs) / 1000.0)!
+            return TrackProgressSlider.DurationFormatter.shared().string(from: Double(self.viewModel.durationMs) / 1000.0)!
         }
     }
     
     var body: some View {
         Slider(
-            value: $progressPercent,
+            value: $viewModel.progressPercent,
             minimumValueLabel: Text(prettyProgress).foregroundColor(.secondary),
             maximumValueLabel: Text(prettyDuration).foregroundColor(.secondary)
         ) {
             Text("")
         }
-        .onReceive(timer) { timer in
-            if isPlaying {
-                if (progressMs < durationMs) {
-                    progressMs += 1000
-                    progressPercent = Double(self.progressMs) / Double(self.durationMs)
-                }
-            }
+        .onReceive(timer) { _ in
+            viewModel.updateProgress()
         }
     }
 }
@@ -60,10 +52,38 @@ extension TrackProgressSlider {
             return sharedDurationFormatter
         }
     }
+    
+    class ViewModel: ObservableObject {
+        @Published var isPlaying: Bool
+        @Published var progressMs: Int
+        @Published var durationMs: Int
+        @Published var progressPercent: Double
+                
+        init(isPlaying: Bool, progressMs: Int, durationMs: Int) {
+            self.isPlaying = isPlaying
+            self.progressMs = progressMs
+            self.durationMs = durationMs
+            self.progressPercent = Double(progressMs) / Double(durationMs)
+        }
+        
+        func calculateProgressPercent() {
+            self.progressPercent = Double(self.progressMs) / Double(self.durationMs)
+        }
+        
+        func updateProgress() {
+            if (self.isPlaying) {
+                if (self.progressMs < self.durationMs) {
+                    self.progressMs += 1000
+                    self.calculateProgressPercent()
+                }
+            }
+        }
+    }
 }
 
 struct TrackProgressSlider_Previews: PreviewProvider {
+    static let viewModel = TrackProgressSlider.ViewModel(isPlaying: true, progressMs: 20000, durationMs: 120000)
     static var previews: some View {
-        TrackProgressSlider()
+        TrackProgressSlider(viewModel: viewModel)
     }
 }
