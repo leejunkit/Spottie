@@ -65,4 +65,24 @@ extension SpotifyAPI {
         req.httpMethod = "POST"
         return client.run(req).print().map(\.value).eraseToAnyPublisher()
     }
+    
+    static func setShuffle(shuffle: Bool) -> AnyPublisher<Nothing?, Error> {
+        let queryItems = [URLQueryItem(name: "val", value: shuffle ? "true" : "false")]
+        var urlComponents = URLComponents(url: base.appendingPathComponent("/player/shuffle"), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = "POST"
+        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+    }
+    
+    static func setRepeatMode(mode: RepeatMode) -> AnyPublisher<Nothing?, Error> {
+        let queryItems = [URLQueryItem(name: "val", value: mode.rawValue)]
+        var urlComponents = URLComponents(url: base.appendingPathComponent("/player/repeat"), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = "POST"
+        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+    }
 }

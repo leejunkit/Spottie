@@ -16,6 +16,8 @@ class PlayerViewModel: PlayerStateProtocol {
     @Published var trackName = ""
     @Published var artistName = ""
     @Published var artworkURL: URL?
+    @Published var isShuffling = false
+    @Published var repeatMode = RepeatMode.none
     
     private var cancellables = [AnyCancellable]()
     private var eventBroker: EventBroker
@@ -85,6 +87,10 @@ class PlayerViewModel: PlayerStateProtocol {
         }
     }
     
+    private func connectNothingPublisher(_ publisher: AnyPublisher<Nothing?, Error>) {
+        publisher.sink { _ in } receiveValue: { _ in }.store(in: &cancellables)
+    }
+    
     func togglePlayPause() {
         var apiCall: AnyPublisher<Nothing?, Error>;
         if self.isPlaying {
@@ -93,11 +99,11 @@ class PlayerViewModel: PlayerStateProtocol {
             apiCall = SpotifyAPI.resume()
         }
         
-        apiCall.print().sink { _ in } receiveValue: { _ in }.store(in: &cancellables)
+        self.connectNothingPublisher(apiCall)
     }
     
     func nextTrack() {
-        SpotifyAPI.nextTrack().sink { _ in } receiveValue: { _ in }.store(in: &cancellables)
+        self.connectNothingPublisher(SpotifyAPI.nextTrack())
     }
     
     func previousTrack() {
@@ -110,11 +116,29 @@ class PlayerViewModel: PlayerStateProtocol {
     func seek(toPercent: Double) {
         // calculate posMs
         let posMs = Int(Double(self.durationMs) * toPercent)
-        SpotifyAPI.seek(posMs: posMs).sink { _ in } receiveValue: { _ in }.store(in: &cancellables)
+        self.connectNothingPublisher(SpotifyAPI.seek(posMs: posMs))
     }
     
     func setVolume(volumePercent: Float) {
         self.volumePercent = volumePercent
-        SpotifyAPI.setVolume(volumePercent: volumePercent).sink { _ in } receiveValue: { _ in }.store(in: &cancellables)
+        self.connectNothingPublisher(SpotifyAPI.setVolume(volumePercent: volumePercent))
+    }
+    
+    func toggleShuffle() {
+        self.isShuffling = !self.isShuffling
+        self.connectNothingPublisher(SpotifyAPI.setShuffle(shuffle: self.isShuffling))
+    }
+    
+    func cycleRepeatMode() {
+        switch self.repeatMode {
+        case .none:
+            self.repeatMode = .track
+        case .track:
+            self.repeatMode = .context
+        case .context:
+            self.repeatMode = .none
+        }
+        
+        self.connectNothingPublisher(SpotifyAPI.setRepeatMode(mode: self.repeatMode))
     }
 }

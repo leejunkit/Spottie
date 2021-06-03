@@ -57,6 +57,7 @@
 		473061A6265B4A10001E3A1F /* WebAPITrackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473061A5265B4A10001E3A1F /* WebAPITrackObject.swift */; };
 		474BAFB8266876030006EB16 /* VolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFB7266876030006EB16 /* VolumeSlider.swift */; };
 		474BAFBA26687AB60006EB16 /* WebAPIDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFB926687AB60006EB16 /* WebAPIDeviceObject.swift */; };
+		474BAFBC2668B0170006EB16 /* RepeatMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFBB2668B0170006EB16 /* RepeatMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		473061A5265B4A10001E3A1F /* WebAPITrackObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPITrackObject.swift; sourceTree = "<group>"; };
 		474BAFB7266876030006EB16 /* VolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSlider.swift; sourceTree = "<group>"; };
 		474BAFB926687AB60006EB16 /* WebAPIDeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIDeviceObject.swift; sourceTree = "<group>"; };
+		474BAFBB2668B0170006EB16 /* RepeatMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +262,7 @@
 				470201B4265B56350030ECA9 /* WebAPIImageObject.swift */,
 				470201B6265B56860030ECA9 /* WebAPIArtistObject.swift */,
 				474BAFB926687AB60006EB16 /* WebAPIDeviceObject.swift */,
+				474BAFBB2668B0170006EB16 /* RepeatMode.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				470201C3265CF29B0030ECA9 /* NowPlaying.swift in Sources */,
 				4730616A26565BB7001E3A1F /* BottomBar.swift in Sources */,
 				473061722656629F001E3A1F /* Nothing.swift in Sources */,
+				474BAFBC2668B0170006EB16 /* RepeatMode.swift in Sources */,
 				473061A12659218F001E3A1F /* SpottieError.swift in Sources */,
 				4730616F26566076001E3A1F /* SpotifyAPI.swift in Sources */,
 				473061A42659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift in Sources */,

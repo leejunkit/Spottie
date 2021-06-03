@@ -13,7 +13,10 @@ struct PlayerControls<M: PlayerStateProtocol>: View {
     var body: some View {
         VStack {
             HStack(spacing: 28) {
-                ShuffleButton()
+                ShuffleButton(
+                    isShuffling: viewModel.isShuffling,
+                    toggle: viewModel.toggleShuffle
+                )
                 PreviousTrackButton(
                     previousTrackButtonTapped: viewModel.previousTrack
                 )
@@ -24,7 +27,10 @@ struct PlayerControls<M: PlayerStateProtocol>: View {
                 NextTrackButton(
                     nextTrackButtonTapped: viewModel.nextTrack
                 )
-                RepeatButton()
+                RepeatButton(
+                    repeatMode: viewModel.repeatMode,
+                    onRepeatButtonTapped: viewModel.cycleRepeatMode
+                )
             }
             TrackProgressSlider(viewModel: TrackProgressSlider.ViewModel(isPlaying: viewModel.isPlaying, progressMs: viewModel.progressMs, durationMs: viewModel.durationMs, onScrubToNewProgressPercent: viewModel.seek))
                 .padding(.leading)
