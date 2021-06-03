@@ -42,6 +42,8 @@ class PlayerViewModel: PlayerStateProtocol {
                 case let .playbackResumed(playbackResumedEvent):
                     self.isPlaying = true
                     self.progressMs = playbackResumedEvent.trackTime
+                case let .trackSeeked(trackSeekedEvent):
+                    self.progressMs = trackSeekedEvent.trackTime
                 case let .trackChanged(trackChangedEvent):
                     self.progressMs = 0
                     self.isPlaying = true
@@ -93,6 +95,15 @@ class PlayerViewModel: PlayerStateProtocol {
     }
     
     func previousTrack() {
-        SpotifyAPI.previousTrack().sink { _ in } receiveValue: { _ in }.store(in: &cancellables)
+        SpotifyAPI.previousTrack().sink { _ in
+            // manually reset the progress to 0
+            self.progressMs = 0
+        } receiveValue: { _ in }.store(in: &cancellables)
+    }
+    
+    func seek(toPercent: Double) {
+        // calculate posMs
+        let posMs = Int(Double(self.durationMs) * toPercent)
+        SpotifyAPI.seek(posMs: posMs).sink { _ in } receiveValue: { _ in }.store(in: &cancellables)
     }
 }

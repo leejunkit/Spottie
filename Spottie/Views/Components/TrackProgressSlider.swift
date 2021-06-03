@@ -14,7 +14,13 @@ struct TrackProgressSlider: View {
     
     var prettyProgress: String {
         get {
-            return TrackProgressSlider.DurationFormatter.shared().string(from: Double(self.viewModel.progressMs) / 1000.0)!
+            let formatter = TrackProgressSlider.DurationFormatter.shared()
+            if (self.viewModel.isScrubbing) {
+                let scrubbedProgress = self.viewModel.progressPercent * Double(self.viewModel.durationMs)
+                return formatter.string(from: scrubbedProgress / 1000.0)!
+            } else {
+                return formatter.string(from: Double(self.viewModel.progressMs) / 1000.0)!
+            }
         }
     }
     
@@ -27,10 +33,16 @@ struct TrackProgressSlider: View {
     var body: some View {
         Slider(
             value: $viewModel.progressPercent,
+            onEditingChanged: { editing in
+                if (!editing) {
+                    viewModel.onScrubToNewProgressPercent(viewModel.progressPercent)
+                }
+                viewModel.isScrubbing = editing
+            },
             minimumValueLabel: Text(prettyProgress).foregroundColor(.secondary),
             maximumValueLabel: Text(prettyDuration).foregroundColor(.secondary)
         ) {
-            Text("")
+            EmptyView()
         }
         .onReceive(timer) { _ in
             viewModel.updateProgress()
@@ -58,12 +70,15 @@ extension TrackProgressSlider {
         @Published var progressMs: Int
         @Published var durationMs: Int
         @Published var progressPercent: Double
-                
-        init(isPlaying: Bool, progressMs: Int, durationMs: Int) {
+        var isScrubbing = false
+        var onScrubToNewProgressPercent: (_ progressPercent: Double) -> Void
+        
+        init(isPlaying: Bool, progressMs: Int, durationMs: Int, onScrubToNewProgressPercent: @escaping (_ progressPercent: Double) -> Void) {
             self.isPlaying = isPlaying
             self.progressMs = progressMs
             self.durationMs = durationMs
             self.progressPercent = Double(progressMs) / Double(durationMs)
+            self.onScrubToNewProgressPercent = onScrubToNewProgressPercent
         }
         
         func calculateProgressPercent() {
@@ -74,7 +89,9 @@ extension TrackProgressSlider {
             if (self.isPlaying) {
                 if (self.progressMs < self.durationMs) {
                     self.progressMs += 1000
-                    self.calculateProgressPercent()
+                    if (!self.isScrubbing) {
+                        self.calculateProgressPercent()
+                    }
                 }
             }
         }
@@ -82,7 +99,9 @@ extension TrackProgressSlider {
 }
 
 struct TrackProgressSlider_Previews: PreviewProvider {
-    static let viewModel = TrackProgressSlider.ViewModel(isPlaying: true, progressMs: 20000, durationMs: 120000)
+    static let viewModel = TrackProgressSlider.ViewModel(isPlaying: true, progressMs: 20000, durationMs: 120000) { progressPercent in
+        
+    }
     static var previews: some View {
         TrackProgressSlider(viewModel: viewModel)
     }

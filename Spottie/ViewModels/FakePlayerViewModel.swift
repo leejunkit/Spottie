@@ -19,4 +19,5 @@ final class FakePlayerViewModel: PlayerStateProtocol {
     func previousTrack() {}
     func nextTrack() {}
     func togglePlayPause() {}
+    func seek(toPercent: Double) {}
 }

@@ -44,4 +44,14 @@ extension SpotifyAPI {
         req.httpMethod = "POST"
         return client.run(req).print().map(\.value).eraseToAnyPublisher()
     }
+    
+    static func seek(posMs: Int) -> AnyPublisher<Nothing?, Error> {
+        let queryItems = [URLQueryItem(name: "pos", value: "\(posMs)")]
+        var urlComponents = URLComponents(url: base.appendingPathComponent("/player/seek"), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = "POST"
+        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+    }
 }

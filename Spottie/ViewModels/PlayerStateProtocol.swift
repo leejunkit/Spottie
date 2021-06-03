@@ -19,4 +19,5 @@ protocol PlayerStateProtocol: ObservableObject {
     func togglePlayPause() -> Void
     func nextTrack() -> Void
     func previousTrack() -> Void
+    func seek(toPercent: Double) -> Void
 }
