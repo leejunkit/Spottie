@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 protocol PlayerStateProtocol: ObservableObject {
+    var volumePercent: Float { get set }
     var isPlaying: Bool { get set }
     var trackName: String { get set }
     var artistName: String { get set }
@@ -20,4 +21,5 @@ protocol PlayerStateProtocol: ObservableObject {
     func nextTrack() -> Void
     func previousTrack() -> Void
     func seek(toPercent: Double) -> Void
+    func setVolume(volumePercent: Float) -> Void
 }

@@ -18,6 +18,11 @@ struct BottomBar<M: PlayerStateProtocol>: View {
             )
             .frame(width: 240, alignment: .leading)
             PlayerControls<M>()
+            VolumeSlider(
+                volumePercent: viewModel.volumePercent,
+                onVolumeChanged: viewModel.setVolume
+            )
+                .frame(width: 160, alignment: .trailing)
         }
     }
 }

@@ -54,4 +54,15 @@ extension SpotifyAPI {
         req.httpMethod = "POST"
         return client.run(req).print().map(\.value).eraseToAnyPublisher()
     }
+    
+    static func setVolume(volumePercent: Float) -> AnyPublisher<Nothing?, Error> {
+        let rawVolume = Int(volumePercent * 65535)
+        let queryItems = [URLQueryItem(name: "volume", value: "\(rawVolume)")]
+        var urlComponents = URLComponents(url: base.appendingPathComponent("/player/set-volume"), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = "POST"
+        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+    }
 }

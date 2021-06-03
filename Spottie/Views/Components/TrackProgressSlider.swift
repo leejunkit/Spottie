@@ -31,21 +31,30 @@ struct TrackProgressSlider: View {
     }
     
     var body: some View {
-        Slider(
-            value: $viewModel.progressPercent,
-            onEditingChanged: { editing in
-                if (!editing) {
-                    viewModel.onScrubToNewProgressPercent(viewModel.progressPercent)
+        HStack {
+            VStack(alignment: .trailing) {
+                Text(prettyProgress).foregroundColor(.secondary)
+            }
+            .frame(width: 40)
+            
+            Slider(
+                value: $viewModel.progressPercent,
+                in: 0...1,
+                onEditingChanged: { editing in
+                    if (!editing) {
+                        viewModel.onScrubToNewProgressPercent(viewModel.progressPercent)
+                    }
+                    viewModel.isScrubbing = editing
                 }
-                viewModel.isScrubbing = editing
-            },
-            minimumValueLabel: Text(prettyProgress).foregroundColor(.secondary),
-            maximumValueLabel: Text(prettyDuration).foregroundColor(.secondary)
-        ) {
-            EmptyView()
-        }
-        .onReceive(timer) { _ in
-            viewModel.updateProgress()
+            )
+            .onReceive(timer) { _ in
+                viewModel.updateProgress()
+            }
+            
+            VStack(alignment: .leading) {
+                Text(prettyDuration).foregroundColor(.secondary)
+            }
+            .frame(width: 40)
         }
     }
 }

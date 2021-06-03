@@ -8,6 +8,7 @@
 import Foundation
 
 final class FakePlayerViewModel: PlayerStateProtocol {
+    var volumePercent : Float = 0.5
     var isPlaying = false
     var durationMs = 1200
     var progressMs = 3600
@@ -20,4 +21,5 @@ final class FakePlayerViewModel: PlayerStateProtocol {
     func nextTrack() {}
     func togglePlayPause() {}
     func seek(toPercent: Double) {}
+    func setVolume(volumePercent: Float) {}
 }
