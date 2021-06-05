@@ -11,7 +11,7 @@ import Combine
 class PlayerViewModel: PlayerStateProtocol {
     @Published var volumePercent: Float = 0.0
     @Published var isPlaying = false
-    @Published var durationMs = 0
+    @Published var durationMs = 1
     @Published var progressMs = 0
     @Published var trackName = ""
     @Published var artistName = ""

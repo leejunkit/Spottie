@@ -170,20 +170,21 @@
 		4730615D26565706001E3A1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4730616626565AF8001E3A1F /* Components */,
+				474BAFBD266B79900006EB16 /* Carousel */,
+				4730616626565AF8001E3A1F /* BottomBar */,
 				4730614F265656ED001E3A1F /* ContentView.swift */,
 				4730615E2656573B001E3A1F /* Sidebar.swift */,
 				473061602656580F001E3A1F /* Home.swift */,
 				4730616226565828001E3A1F /* Search.swift */,
 				4730616426565841001E3A1F /* Library.swift */,
-				4730616926565BB7001E3A1F /* BottomBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4730616626565AF8001E3A1F /* Components */ = {
+		4730616626565AF8001E3A1F /* BottomBar */ = {
 			isa = PBXGroup;
 			children = (
+				4730616926565BB7001E3A1F /* BottomBar.swift */,
 				470201C9265CF9380030ECA9 /* ShuffleButton.swift */,
 				4730616726565B03001E3A1F /* PlayPauseButton.swift */,
 				470201BE265BB4320030ECA9 /* PreviousTrackButton.swift */,
@@ -194,7 +195,7 @@
 				470201CD265DE8720030ECA9 /* TrackProgressSlider.swift */,
 				474BAFB7266876030006EB16 /* VolumeSlider.swift */,
 			);
-			path = Components;
+			path = BottomBar;
 			sourceTree = "<group>";
 		};
 		4730616B26565EB8001E3A1F /* Backend */ = {
@@ -273,6 +274,13 @@
 				473061A32659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		474BAFBD266B79900006EB16 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
