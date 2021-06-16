@@ -44,6 +44,8 @@ class PlayerViewModel: PlayerStateProtocol {
         }
         
         token.store(in: &cancellables)
+        
+        
     }
     
     func handleInitialStateUpdate(context ctx: CurrentlyPlayingContextObject) {

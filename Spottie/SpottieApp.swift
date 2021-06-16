@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 @main
 struct SpottieApp: App {
@@ -15,6 +16,9 @@ struct SpottieApp: App {
         WindowGroup {
             ContentView<PlayerViewModel>()
                 .environmentObject(playerViewModel)
+        }
+        .commands {
+            PlayerCommands()
         }
     }
 }

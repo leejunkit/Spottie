@@ -13,7 +13,7 @@ struct Sidebar: View {
     var body: some View {
         List {
             NavigationLink(
-                destination: Home<PlayerViewModel>(),
+                destination: Home(),
                 tag: Screen.home,
                 selection: $state,
                 label: {

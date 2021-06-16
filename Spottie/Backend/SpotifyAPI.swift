@@ -21,6 +21,25 @@ extension SpotifyAPI {
         return client.run(req, decoder).map(\.value).eraseToAnyPublisher()
     }
     
+    static func load(_ uri: String) -> AnyPublisher<Nothing?, Error> {
+        let queryItems = [
+            URLQueryItem(name: "uri", value: uri),
+            URLQueryItem(name: "play", value: "true")
+        ]
+        var urlComponents = URLComponents(url: base.appendingPathComponent("/player/load"), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = "POST"
+        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+    }
+    
+    static func togglePlayPause() -> AnyPublisher<Nothing?, Error> {
+        var req = URLRequest(url: base.appendingPathComponent("/player/play-pause"))
+        req.httpMethod = "POST"
+        return client.run(req).map(\.value).eraseToAnyPublisher()
+    }
+    
     static func pause() -> AnyPublisher<Nothing?, Error> {
         var req = URLRequest(url: base.appendingPathComponent("/player/pause"))
         req.httpMethod = "POST"
@@ -84,5 +103,32 @@ extension SpotifyAPI {
         var req = URLRequest(url: urlComponents.url!)
         req.httpMethod = "POST"
         return client.run(req).print().map(\.value).eraseToAnyPublisher()
+    }
+    
+    static func getPersonalizedRecommendations() -> AnyPublisher<PersonalizedRecommendationsResponse?, Error> {
+        let queryItems = [
+            URLQueryItem(name: "timestamp", value: "2021-06-07T10:54:29.467Z"),
+            URLQueryItem(name: "platform", value: "web"),
+            URLQueryItem(name: "content_limit", value: "10"),
+            URLQueryItem(name: "limit", value: "20"),
+            URLQueryItem(name: "types", value: "album,playlist,artist,show,station,episode"),
+            URLQueryItem(name: "image_style", value: "gradient_overlay"),
+            URLQueryItem(name: "country", value: "SG"),
+            URLQueryItem(name: "locale", value: "en"),
+            URLQueryItem(name: "market", value: "from_token")
+        ]
+        
+        var urlComponents = URLComponents(
+            url: base.appendingPathComponent("/web-api/v1/views/personalized-recommendations"),
+            resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = "GET"
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase;
+        
+        return client.run(req, decoder).print().map(\.value).eraseToAnyPublisher()
     }
 }

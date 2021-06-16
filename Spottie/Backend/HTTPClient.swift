@@ -20,7 +20,6 @@ struct HTTPClient {
             .tryMap { result -> Response<T> in
                 let response = result.response as! HTTPURLResponse
                 let contentType = response.allHeaderFields["Content-Type"] as? String
-                print(response.allHeaderFields)
                 
                 if let contentType = contentType {
                     if contentType.contains("application/json") {

@@ -58,6 +58,17 @@
 		474BAFB8266876030006EB16 /* VolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFB7266876030006EB16 /* VolumeSlider.swift */; };
 		474BAFBA26687AB60006EB16 /* WebAPIDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFB926687AB60006EB16 /* WebAPIDeviceObject.swift */; };
 		474BAFBC2668B0170006EB16 /* RepeatMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFBB2668B0170006EB16 /* RepeatMode.swift */; };
+		474BAFC1266B84CD0006EB16 /* CarouselRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFC0266B84CD0006EB16 /* CarouselRow.swift */; };
+		474BAFC3266B85440006EB16 /* CarouselRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474BAFC2266B85440006EB16 /* CarouselRowItem.swift */; };
+		475798C1266E2DD700AADF2F /* RecommendationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798C0266E2DD700AADF2F /* RecommendationGroup.swift */; };
+		475798C3266E309A00AADF2F /* RecommendationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798C2266E309A00AADF2F /* RecommendationItem.swift */; };
+		475798C5266E348200AADF2F /* RecommendationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798C4266E348200AADF2F /* RecommendationLink.swift */; };
+		475798CD266F0F7F00AADF2F /* WebAPIPlaylistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798CC266F0F7F00AADF2F /* WebAPIPlaylistObject.swift */; };
+		475798CF266F101600AADF2F /* WebAPIPublicUserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798CE266F101600AADF2F /* WebAPIPublicUserObject.swift */; };
+		475798D1266F103100AADF2F /* WebAPIPlaylistTrackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */; };
+		475798D3266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */; };
+		475798D5266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */; };
+		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +125,17 @@
 		474BAFB7266876030006EB16 /* VolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSlider.swift; sourceTree = "<group>"; };
 		474BAFB926687AB60006EB16 /* WebAPIDeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIDeviceObject.swift; sourceTree = "<group>"; };
 		474BAFBB2668B0170006EB16 /* RepeatMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatMode.swift; sourceTree = "<group>"; };
+		474BAFC0266B84CD0006EB16 /* CarouselRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselRow.swift; sourceTree = "<group>"; };
+		474BAFC2266B85440006EB16 /* CarouselRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselRowItem.swift; sourceTree = "<group>"; };
+		475798C0266E2DD700AADF2F /* RecommendationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationGroup.swift; sourceTree = "<group>"; };
+		475798C2266E309A00AADF2F /* RecommendationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationItem.swift; sourceTree = "<group>"; };
+		475798C4266E348200AADF2F /* RecommendationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationLink.swift; sourceTree = "<group>"; };
+		475798CC266F0F7F00AADF2F /* WebAPIPlaylistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistObject.swift; sourceTree = "<group>"; };
+		475798CE266F101600AADF2F /* WebAPIPublicUserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPublicUserObject.swift; sourceTree = "<group>"; };
+		475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistTrackObject.swift; sourceTree = "<group>"; };
+		475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedRecommendationsResponse.swift; sourceTree = "<group>"; };
+		475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistTracksRefObject.swift; sourceTree = "<group>"; };
+		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +172,7 @@
 				4730616B26565EB8001E3A1F /* Backend */,
 				4730617526588C40001E3A1F /* ViewModels */,
 				4730615D26565706001E3A1F /* Views */,
+				47C56F5E2679A779003EA20A /* Commands */,
 				4730614D265656ED001E3A1F /* SpottieApp.swift */,
 				47306151265656EF001E3A1F /* Assets.xcassets */,
 				47306156265656EF001E3A1F /* Info.plist */,
@@ -263,6 +286,10 @@
 				470201B4265B56350030ECA9 /* WebAPIImageObject.swift */,
 				470201B6265B56860030ECA9 /* WebAPIArtistObject.swift */,
 				474BAFB926687AB60006EB16 /* WebAPIDeviceObject.swift */,
+				475798CC266F0F7F00AADF2F /* WebAPIPlaylistObject.swift */,
+				475798CE266F101600AADF2F /* WebAPIPublicUserObject.swift */,
+				475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */,
+				475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */,
 				474BAFBB2668B0170006EB16 /* RepeatMode.swift */,
 			);
 			path = Base;
@@ -272,6 +299,10 @@
 			isa = PBXGroup;
 			children = (
 				473061A32659FFF5001E3A1F /* CurrentlyPlayingContextObject.swift */,
+				475798C0266E2DD700AADF2F /* RecommendationGroup.swift */,
+				475798C2266E309A00AADF2F /* RecommendationItem.swift */,
+				475798C4266E348200AADF2F /* RecommendationLink.swift */,
+				475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -279,8 +310,18 @@
 		474BAFBD266B79900006EB16 /* Carousel */ = {
 			isa = PBXGroup;
 			children = (
+				474BAFC0266B84CD0006EB16 /* CarouselRow.swift */,
+				474BAFC2266B85440006EB16 /* CarouselRowItem.swift */,
 			);
 			path = Carousel;
+			sourceTree = "<group>";
+		};
+		47C56F5E2679A779003EA20A /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				47C56F5F2679A789003EA20A /* PlayerCommands.swift */,
+			);
+			path = Commands;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,11 +399,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475798D5266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift in Sources */,
 				47306150265656ED001E3A1F /* ContentView.swift in Sources */,
 				473061792658A02E001E3A1F /* SpotifyEvent.swift in Sources */,
 				470201BD265B80970030ECA9 /* FakePlayerViewModel.swift in Sources */,
 				4730618326590931001E3A1F /* TrackObject.swift in Sources */,
 				470201BB265B7C190030ECA9 /* PlayerStateProtocol.swift in Sources */,
+				475798C5266E348200AADF2F /* RecommendationLink.swift in Sources */,
 				474BAFBA26687AB60006EB16 /* WebAPIDeviceObject.swift in Sources */,
 				4730615F2656573B001E3A1F /* Sidebar.swift in Sources */,
 				470201CC265CF9610030ECA9 /* RepeatButton.swift in Sources */,
@@ -373,6 +416,7 @@
 				4730618726591DF7001E3A1F /* ArtistObject.swift in Sources */,
 				470201BF265BB4320030ECA9 /* PreviousTrackButton.swift in Sources */,
 				470201C3265CF29B0030ECA9 /* NowPlaying.swift in Sources */,
+				475798C3266E309A00AADF2F /* RecommendationItem.swift in Sources */,
 				4730616A26565BB7001E3A1F /* BottomBar.swift in Sources */,
 				473061722656629F001E3A1F /* Nothing.swift in Sources */,
 				474BAFBC2668B0170006EB16 /* RepeatMode.swift in Sources */,
@@ -385,6 +429,7 @@
 				4730619B26591FFC001E3A1F /* TrackSeekedEvent.swift in Sources */,
 				470201B1265B54720030ECA9 /* WebAPISimplifiedAlbumObject.swift in Sources */,
 				470201B5265B56350030ECA9 /* WebAPIImageObject.swift in Sources */,
+				47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */,
 				4730617426587EF6001E3A1F /* WebsocketClient.swift in Sources */,
 				473061612656580F001E3A1F /* Home.swift in Sources */,
 				470201C1265BB43C0030ECA9 /* NextTrackButton.swift in Sources */,
@@ -395,16 +440,23 @@
 				470201B3265B55F30030ECA9 /* WebAPISimplifiedArtistObject.swift in Sources */,
 				470201B7265B56860030ECA9 /* WebAPIArtistObject.swift in Sources */,
 				473061A6265B4A10001E3A1F /* WebAPITrackObject.swift in Sources */,
+				475798C1266E2DD700AADF2F /* RecommendationGroup.swift in Sources */,
+				474BAFC3266B85440006EB16 /* CarouselRowItem.swift in Sources */,
 				473061852659164E001E3A1F /* AlbumObject.swift in Sources */,
 				474BAFB8266876030006EB16 /* VolumeSlider.swift in Sources */,
 				4730619D26592023001E3A1F /* PlaybackPausedEvent.swift in Sources */,
+				475798D3266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift in Sources */,
+				475798D1266F103100AADF2F /* WebAPIPlaylistTrackObject.swift in Sources */,
+				475798CF266F101600AADF2F /* WebAPIPublicUserObject.swift in Sources */,
 				4730618F26591E9C001E3A1F /* ContextChangedEvent.swift in Sources */,
+				474BAFC1266B84CD0006EB16 /* CarouselRow.swift in Sources */,
 				4730616526565841001E3A1F /* Library.swift in Sources */,
 				4730619926591F92001E3A1F /* VolumeChangedEvent.swift in Sources */,
 				4730619726591F14001E3A1F /* MetadataAvailableEvent.swift in Sources */,
 				4730617B265903A6001E3A1F /* EventBroker.swift in Sources */,
 				470201CA265CF9380030ECA9 /* ShuffleButton.swift in Sources */,
 				4730619326591EE1001E3A1F /* TrackChangedEvent.swift in Sources */,
+				475798CD266F0F7F00AADF2F /* WebAPIPlaylistObject.swift in Sources */,
 				4730619526591EF9001E3A1F /* PlaybackResumedEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
