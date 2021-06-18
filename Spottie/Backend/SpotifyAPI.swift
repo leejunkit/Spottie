@@ -31,7 +31,7 @@ extension SpotifyAPI {
 
         var req = URLRequest(url: urlComponents.url!)
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func togglePlayPause() -> AnyPublisher<Nothing?, Error> {
@@ -49,19 +49,19 @@ extension SpotifyAPI {
     static func resume() -> AnyPublisher<Nothing?, Error> {
         var req = URLRequest(url: base.appendingPathComponent("/player/resume"))
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func previousTrack() -> AnyPublisher<Nothing?, Error> {
         var req = URLRequest(url: base.appendingPathComponent("/player/prev"))
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func nextTrack() -> AnyPublisher<Nothing?, Error> {
         var req = URLRequest(url: base.appendingPathComponent("/player/next"))
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func seek(posMs: Int) -> AnyPublisher<Nothing?, Error> {
@@ -71,7 +71,7 @@ extension SpotifyAPI {
 
         var req = URLRequest(url: urlComponents.url!)
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func setVolume(volumePercent: Float) -> AnyPublisher<Nothing?, Error> {
@@ -82,7 +82,7 @@ extension SpotifyAPI {
 
         var req = URLRequest(url: urlComponents.url!)
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func setShuffle(shuffle: Bool) -> AnyPublisher<Nothing?, Error> {
@@ -92,7 +92,7 @@ extension SpotifyAPI {
 
         var req = URLRequest(url: urlComponents.url!)
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func setRepeatMode(mode: RepeatMode) -> AnyPublisher<Nothing?, Error> {
@@ -102,12 +102,17 @@ extension SpotifyAPI {
 
         var req = URLRequest(url: urlComponents.url!)
         req.httpMethod = "POST"
-        return client.run(req).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
     static func getPersonalizedRecommendations() -> AnyPublisher<PersonalizedRecommendationsResponse?, Error> {
+        // get the current date
+        let date = Date()
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.insert(.withFractionalSeconds)
+        
         let queryItems = [
-            URLQueryItem(name: "timestamp", value: "2021-06-07T10:54:29.467Z"),
+            URLQueryItem(name: "timestamp", value: formatter.string(from: date)),
             URLQueryItem(name: "platform", value: "web"),
             URLQueryItem(name: "content_limit", value: "10"),
             URLQueryItem(name: "limit", value: "20"),
@@ -129,6 +134,6 @@ extension SpotifyAPI {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase;
         
-        return client.run(req, decoder).print().map(\.value).eraseToAnyPublisher()
+        return client.run(req, decoder).map(\.value).eraseToAnyPublisher()
     }
 }

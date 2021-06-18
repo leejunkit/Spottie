@@ -14,14 +14,17 @@ struct CarouselRow: View {
             Text(viewModel.title)
                 .font(.title)
                 .padding(.leading)
-            Text(viewModel.subtitle)
-                .font(.body)
-                .foregroundColor(.secondary)
-                .padding(.leading)
-                .padding(.bottom, 8)
+            viewModel.subtitle.map({
+                Text($0)
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .padding(.leading)
+                    .padding(.bottom, 8)
+            })
             HStack(alignment: .top, spacing: 40) {
                 ForEach(viewModel.items) { item in
-                    CarouselRowItem(viewModel: CarouselRowItem.ViewModel.init(item))
+                    let vm = CarouselRowItem.ViewModel.init(item, artworkIsCircular: viewModel.renderMode == .circular)
+                    CarouselRowItem(viewModel: vm)
                         .onTapGesture {
                             viewModel.onItemPressed(item.id)
                         }
@@ -33,9 +36,15 @@ struct CarouselRow: View {
 }
 
 extension CarouselRow {
+    enum RenderMode {
+        case circular
+        case normal
+    }
+    
     class ViewModel: ObservableObject {
+        @Published var renderMode: RenderMode
         @Published var title: String
-        @Published var subtitle = "Unwind with these calming playlists."
+        @Published var subtitle: String?
         @Published var items: [RecommendationItem]
         let onItemPressed: (String) -> Void
         
@@ -43,6 +52,13 @@ extension CarouselRow {
             self.onItemPressed = onItemPressed
             
             title = recommendationGroup.name
+            subtitle = recommendationGroup.tagline
+            
+            if (recommendationGroup.id == "home-personalized[favorite-artists]") {
+                renderMode = .circular
+            } else {
+                renderMode = .normal
+            }
             
             let numItems = recommendationGroup.items.count
             if (numItems < numberOfItemsToShow) {

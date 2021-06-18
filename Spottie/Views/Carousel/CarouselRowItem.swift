@@ -13,10 +13,19 @@ struct CarouselRowItem: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            WebImage(url: viewModel.artworkURL)
-                .resizable()
-                .aspectRatio(1.0, contentMode: .fill)
-                .cornerRadius(5)
+            if viewModel.artworkIsCircle {
+                WebImage(url: viewModel.artworkURL)
+                    .resizable()
+                    .aspectRatio(1.0, contentMode: .fill)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 4.0))
+                    .shadow(radius: 7)
+            } else {
+                WebImage(url: viewModel.artworkURL)
+                    .resizable()
+                    .aspectRatio(1.0, contentMode: .fill)
+                    .cornerRadius(5)
+            }
             Text(viewModel.title)
                 .lineLimit(1)
                 .foregroundColor(.primary)
@@ -44,8 +53,11 @@ extension CarouselRowItem {
         @Published var subtitle: String
         @Published var artworkURL: URL
         @Published var isHovering = false
+        @Published var artworkIsCircle = false
         
-        init(_ item: RecommendationItem) {
+        init(_ item: RecommendationItem, artworkIsCircular: Bool) {
+            artworkIsCircle = artworkIsCircular
+            
             if let data = item.data {
                 switch data {
                 case let .album(album):
@@ -54,7 +66,7 @@ extension CarouselRowItem {
                     self.artworkURL = album.getArtworkURL()!
                 case let .artist(artist):
                     self.title = artist.name
-                    self.subtitle = artist.name
+                    self.subtitle = "Artist"
                     self.artworkURL = URL(string: artist.images[0].url)!
                 case let.playlist(playlist):
                     self.title = playlist.name

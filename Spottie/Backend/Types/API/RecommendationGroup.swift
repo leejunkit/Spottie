@@ -10,6 +10,7 @@ import Foundation
 struct RecommendationGroup: Decodable, Hashable, Identifiable {
     var id: String
     var name: String
+    var tagline: String?
     var rendering: String
     var items: [RecommendationItem]
     
