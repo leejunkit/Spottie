@@ -22,11 +22,11 @@ struct ShortcutGrid: View {
                 ForEach(items) { item in
                     ShortcutItem(
                         itemHeight: 80,
-                        viewModel: ShortcutItem.ViewModel(item)
+                        viewModel: ShortcutItem.ViewModel(item),
+                        onPlayButtonPressed: {
+                            onItemPressed(item.id)
+                        }
                     )
-                    .onTapGesture {
-                        onItemPressed(item.id)
-                    }
                     .frame(height: 80)
                 }
             }

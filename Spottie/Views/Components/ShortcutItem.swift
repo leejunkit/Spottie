@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct ShortcutItem: View {
     var itemHeight: CGFloat
     var viewModel: ViewModel
+    var onPlayButtonPressed: () -> Void
     
     @State private var isHovering = false
     
@@ -23,10 +24,17 @@ struct ShortcutItem: View {
             Text(viewModel.title).bold()
                 .padding(.leading)
             Spacer()
+            GreenPlayButton(
+                onPress: onPlayButtonPressed
+            )
+            .padding(.trailing)
+            .opacity(isHovering ? 1.0 : 0.0)
+            .animation(.linear(duration: 0.1))
         }
         .background(
             Color(NSColor.alternatingContentBackgroundColors[1])
                 .opacity(isHovering ? 1.0 : 0.3)
+                .animation(.linear(duration: 0.1))
         )
         .onHover { hovering in
             isHovering = hovering

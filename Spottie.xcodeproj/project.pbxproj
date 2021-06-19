@@ -71,6 +71,7 @@
 		475EE242267C9306007BEBDC /* ShortcutGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE241267C9306007BEBDC /* ShortcutGrid.swift */; };
 		475EE244267D6659007BEBDC /* ShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE243267D6659007BEBDC /* ShortcutItem.swift */; };
 		475EE248267D7784007BEBDC /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE247267D7784007BEBDC /* SearchField.swift */; };
+		475EE24A267DA451007BEBDC /* GreenPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE249267DA451007BEBDC /* GreenPlayButton.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		475EE241267C9306007BEBDC /* ShortcutGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutGrid.swift; sourceTree = "<group>"; };
 		475EE243267D6659007BEBDC /* ShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutItem.swift; sourceTree = "<group>"; };
 		475EE247267D7784007BEBDC /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		475EE249267DA451007BEBDC /* GreenPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenPlayButton.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -321,6 +323,7 @@
 				475EE241267C9306007BEBDC /* ShortcutGrid.swift */,
 				475EE243267D6659007BEBDC /* ShortcutItem.swift */,
 				475EE247267D7784007BEBDC /* SearchField.swift */,
+				475EE249267DA451007BEBDC /* GreenPlayButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				4730619F26592046001E3A1F /* InactiveSessionEvent.swift in Sources */,
 				4730614E265656ED001E3A1F /* SpottieApp.swift in Sources */,
 				4730617726588C51001E3A1F /* PlayerViewModel.swift in Sources */,
+				475EE24A267DA451007BEBDC /* GreenPlayButton.swift in Sources */,
 				470201B3265B55F30030ECA9 /* WebAPISimplifiedArtistObject.swift in Sources */,
 				470201B7265B56860030ECA9 /* WebAPIArtistObject.swift in Sources */,
 				473061A6265B4A10001E3A1F /* WebAPITrackObject.swift in Sources */,
