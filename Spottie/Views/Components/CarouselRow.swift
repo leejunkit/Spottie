@@ -29,9 +29,11 @@ struct CarouselRow: View {
                 HStack(alignment: .top, spacing: 40) {
                     ForEach(viewModel.items) { item in
                         let vm = CarouselRowItem.ViewModel.init(item)
-                        CarouselRowItem(viewModel: vm)
+                        CarouselRowItem(viewModel: vm, onPlayButtonPressed: {
+                            onItemPressed(item.id)
+                        })
                             .onTapGesture {
-                                onItemPressed(item.id)
+                                
                             }
                     }
                 }

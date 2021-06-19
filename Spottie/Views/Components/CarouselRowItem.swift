@@ -10,22 +10,32 @@ import SDWebImageSwiftUI
 
 struct CarouselRowItem: View {
     @ObservedObject var viewModel: ViewModel
+    var onPlayButtonPressed: () -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
-            if viewModel.artworkIsCircle {
-                WebImage(url: viewModel.artworkURL)
-                    .resizable()
-                    .aspectRatio(1.0, contentMode: .fill)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 4.0))
-                    .shadow(radius: 7)
-            } else {
-                WebImage(url: viewModel.artworkURL)
-                    .resizable()
-                    .aspectRatio(1.0, contentMode: .fill)
-                    .cornerRadius(5)
+            ZStack(alignment: .bottomTrailing) {
+                if viewModel.artworkIsCircle {
+                    WebImage(url: viewModel.artworkURL)
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fill)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4.0))
+                        .shadow(radius: 7)
+                } else {
+                    WebImage(url: viewModel.artworkURL)
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fill)
+                        .cornerRadius(5)
+                }
+                GreenPlayButton {
+                    onPlayButtonPressed()
+                }
+                .offset(x: -16, y: -16)
+                .opacity(viewModel.isHovering ? 1.0 : 0.0)
+                .animation(.linear(duration: 0.1))
             }
+            
             Text(viewModel.title)
                 .lineLimit(1)
                 .foregroundColor(.primary)
@@ -40,6 +50,7 @@ struct CarouselRowItem: View {
         .background(
             Color(NSColor.alternatingContentBackgroundColors[1])
                 .opacity(viewModel.isHovering ? 1.0 : 0.3)
+                .animation(.linear(duration: 0.15))
         )
         .onHover { isHovered in
             viewModel.isHovering = isHovered

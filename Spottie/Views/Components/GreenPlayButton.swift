@@ -16,14 +16,15 @@ struct GreenPlayButton: View {
         Button(action: onPress) {
             Image(systemName: "play.circle.fill")
                 .resizable()
-                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 .frame(width: 32, height: 32)
                 .foregroundColor(.green)
+                .background(Color.white)
         }
         .buttonStyle(BorderlessButtonStyle())
         .onHover { hovering in
             isHovering = hovering
         }
+        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
         .scaleEffect(isHovering ? 1.1 : 1.0)
         .animation(.linear(duration: 0.05))
     }
