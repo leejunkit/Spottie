@@ -55,9 +55,7 @@ extension CarouselRowItem {
         @Published var isHovering = false
         @Published var artworkIsCircle = false
         
-        init(_ item: RecommendationItem, artworkIsCircular: Bool) {
-            artworkIsCircle = artworkIsCircular
-            
+        init(_ item: RecommendationItem) {
             if let data = item.data {
                 switch data {
                 case let .album(album):
@@ -68,6 +66,7 @@ extension CarouselRowItem {
                     self.title = artist.name
                     self.subtitle = "Artist"
                     self.artworkURL = URL(string: artist.images[0].url)!
+                    self.artworkIsCircle = true
                 case let.playlist(playlist):
                     self.title = playlist.name
                     self.subtitle = playlist.description ?? ""
@@ -75,12 +74,12 @@ extension CarouselRowItem {
                 default:
                     self.title = ""
                     self.subtitle = ""
-                    self.artworkURL = URL(string: "https://mosaic.scdn.co/640/ab67616d00001e020b7c6d46885f7434c99e6d8bab67616d00001e0244bb39545f5d7176080d17aeab67616d00001e027679b9d0724cc7421189ac44ab67616d00001e028863bc11d2aa12b54f5aeb36")!
+                    self.artworkURL = URL(string: "https://misc.scdn.co/liked-songs/liked-songs-640.png")!
                 }
             } else {
                 self.title = ""
                 self.subtitle = ""
-                self.artworkURL = URL(string: "https://mosaic.scdn.co/640/ab67616d00001e020b7c6d46885f7434c99e6d8bab67616d00001e0244bb39545f5d7176080d17aeab67616d00001e027679b9d0724cc7421189ac44ab67616d00001e028863bc11d2aa12b54f5aeb36")!
+                self.artworkURL = URL(string: "https://misc.scdn.co/liked-songs/liked-songs-640.png")!
             }
         }
     }

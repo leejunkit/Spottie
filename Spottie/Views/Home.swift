@@ -15,12 +15,23 @@ struct Home: View {
             ScrollView(.vertical) {
                 LazyVStack(alignment: .leading) {
                     ForEach(viewModel.recommendationGroups) { group in
-                        CarouselRow(viewModel: CarouselRow.ViewModel.init(
-                                        group,
-                                        numberOfItemsToShow: numberOfItemsToShowInRow(reader),
-                            onItemPressed: viewModel.load
-                            ))
-                            .padding()
+                        if group.id == "shortcuts" {
+                            ShortcutGrid(
+                                items: group.items,
+                                onItemPressed: viewModel.load
+                            )
+                                .padding()
+                        } else if group.items.count > 0 {
+                            let vm = CarouselRow.ViewModel.init(group,
+                                numberOfItemsToShow: numberOfItemsToShowInRow(reader)
+                            )
+                            
+                            CarouselRow(
+                                viewModel: vm,
+                                onItemPressed: viewModel.load
+                            )
+                                .padding()
+                        }
                     }
                 }
             }
@@ -42,7 +53,7 @@ extension Home {
         private var cancellables = [AnyCancellable]()
         init() {
             SpotifyAPI.getPersonalizedRecommendations().sink { _ in } receiveValue: { response in
-                self.recommendationGroups = Array(response!.content.items.dropFirst(2))
+                self.recommendationGroups = response!.content.items
             }.store(in: &cancellables)
         }
         

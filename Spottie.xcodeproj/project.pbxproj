@@ -68,6 +68,8 @@
 		475798D1266F103100AADF2F /* WebAPIPlaylistTrackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */; };
 		475798D3266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */; };
 		475798D5266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */; };
+		475EE242267C9306007BEBDC /* ShortcutGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE241267C9306007BEBDC /* ShortcutGrid.swift */; };
+		475EE244267D6659007BEBDC /* ShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE243267D6659007BEBDC /* ShortcutItem.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +137,8 @@
 		475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistTrackObject.swift; sourceTree = "<group>"; };
 		475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedRecommendationsResponse.swift; sourceTree = "<group>"; };
 		475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistTracksRefObject.swift; sourceTree = "<group>"; };
+		475EE241267C9306007BEBDC /* ShortcutGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutGrid.swift; sourceTree = "<group>"; };
+		475EE243267D6659007BEBDC /* ShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutItem.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +197,7 @@
 		4730615D26565706001E3A1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				474BAFBD266B79900006EB16 /* Carousel */,
+				475EE240267C92EC007BEBDC /* Components */,
 				4730616626565AF8001E3A1F /* BottomBar */,
 				4730614F265656ED001E3A1F /* ContentView.swift */,
 				4730615E2656573B001E3A1F /* Sidebar.swift */,
@@ -307,13 +311,15 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		474BAFBD266B79900006EB16 /* Carousel */ = {
+		475EE240267C92EC007BEBDC /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				474BAFC0266B84CD0006EB16 /* CarouselRow.swift */,
 				474BAFC2266B85440006EB16 /* CarouselRowItem.swift */,
+				475EE241267C9306007BEBDC /* ShortcutGrid.swift */,
+				475EE243267D6659007BEBDC /* ShortcutItem.swift */,
 			);
-			path = Carousel;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		47C56F5E2679A779003EA20A /* Commands */ = {
@@ -401,6 +407,7 @@
 			files = (
 				475798D5266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift in Sources */,
 				47306150265656ED001E3A1F /* ContentView.swift in Sources */,
+				475EE244267D6659007BEBDC /* ShortcutItem.swift in Sources */,
 				473061792658A02E001E3A1F /* SpotifyEvent.swift in Sources */,
 				470201BD265B80970030ECA9 /* FakePlayerViewModel.swift in Sources */,
 				4730618326590931001E3A1F /* TrackObject.swift in Sources */,
@@ -410,6 +417,7 @@
 				4730615F2656573B001E3A1F /* Sidebar.swift in Sources */,
 				470201CC265CF9610030ECA9 /* RepeatButton.swift in Sources */,
 				4730618B26591E36001E3A1F /* CoverGroupObject.swift in Sources */,
+				475EE242267C9306007BEBDC /* ShortcutGrid.swift in Sources */,
 				4730618926591E16001E3A1F /* DateObject.swift in Sources */,
 				4730616826565B03001E3A1F /* PlayPauseButton.swift in Sources */,
 				4730616326565828001E3A1F /* Search.swift in Sources */,

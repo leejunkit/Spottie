@@ -8,5 +8,7 @@
 import Foundation
 
 struct RecommendationLink: Decodable {
-    
+    var uri: String
+    var name: String
+    var images: [WebAPIImageObject]
 }
