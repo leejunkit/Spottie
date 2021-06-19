@@ -70,6 +70,7 @@
 		475798D5266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */; };
 		475EE242267C9306007BEBDC /* ShortcutGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE241267C9306007BEBDC /* ShortcutGrid.swift */; };
 		475EE244267D6659007BEBDC /* ShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE243267D6659007BEBDC /* ShortcutItem.swift */; };
+		475EE248267D7784007BEBDC /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE247267D7784007BEBDC /* SearchField.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,7 @@
 		475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistTracksRefObject.swift; sourceTree = "<group>"; };
 		475EE241267C9306007BEBDC /* ShortcutGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutGrid.swift; sourceTree = "<group>"; };
 		475EE243267D6659007BEBDC /* ShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutItem.swift; sourceTree = "<group>"; };
+		475EE247267D7784007BEBDC /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -318,6 +320,7 @@
 				474BAFC2266B85440006EB16 /* CarouselRowItem.swift */,
 				475EE241267C9306007BEBDC /* ShortcutGrid.swift */,
 				475EE243267D6659007BEBDC /* ShortcutItem.swift */,
+				475EE247267D7784007BEBDC /* SearchField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				470201CA265CF9380030ECA9 /* ShuffleButton.swift in Sources */,
 				4730619326591EE1001E3A1F /* TrackChangedEvent.swift in Sources */,
 				475798CD266F0F7F00AADF2F /* WebAPIPlaylistObject.swift in Sources */,
+				475EE248267D7784007BEBDC /* SearchField.swift in Sources */,
 				4730619526591EF9001E3A1F /* PlaybackResumedEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

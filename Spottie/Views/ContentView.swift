@@ -13,6 +13,7 @@ enum Screen: Hashable {
 
 struct ContentView<M: PlayerStateProtocol>: View {
     @State var screen: Screen? = .home
+    @State var searchText = ""
     
     var body: some View {
         VStack {
@@ -23,6 +24,12 @@ struct ContentView<M: PlayerStateProtocol>: View {
             BottomBar<M>()
                 .frame(height: 66)
                 .padding()
+        }
+        .toolbar {
+            ToolbarItem {
+                SearchField(search: $searchText)
+                    .frame(minWidth: 100, idealWidth: 200, maxWidth: .infinity)
+            }
         }
     }
 }
