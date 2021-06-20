@@ -136,4 +136,25 @@ extension SpotifyAPI {
         
         return client.run(req, decoder).map(\.value).eraseToAnyPublisher()
     }
+    
+    static func search() -> AnyPublisher<SearchResultsResponse, Error> {
+        let queryItems = [
+            URLQueryItem(name: "q", value: "akmu"),
+            URLQueryItem(name: "type", value: "album,artist,playlist,track"),
+            URLQueryItem(name: "market", value: "from_token")
+        ]
+        
+        var urlComponents = URLComponents(
+            url: base.appendingPathComponent("/web-api/v1/search"),
+            resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+        
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = "GET"
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase;
+        
+        return client.run(req, decoder).map(\.value).eraseToAnyPublisher()
+    }
 }
