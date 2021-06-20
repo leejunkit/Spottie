@@ -25,6 +25,7 @@ struct ShortcutItem: View {
                 .padding(.leading)
             Spacer()
             GreenPlayButton(
+                width: 32,
                 onPress: onPlayButtonPressed
             )
             .padding(.trailing)

@@ -28,7 +28,7 @@ struct CarouselRowItem: View {
                         .aspectRatio(1.0, contentMode: .fill)
                         .cornerRadius(5)
                 }
-                GreenPlayButton {
+                GreenPlayButton(width: 48) {
                     onPlayButtonPressed()
                 }
                 .offset(x: -16, y: -16)

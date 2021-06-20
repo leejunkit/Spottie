@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GreenPlayButton: View {
+    var width: CGFloat
     var onPress: () -> Void
     
     @State private var isHovering = false
@@ -16,7 +17,7 @@ struct GreenPlayButton: View {
         Button(action: onPress) {
             Image(systemName: "play.circle.fill")
                 .resizable()
-                .frame(width: 32, height: 32)
+                .frame(width: width, height: width)
                 .foregroundColor(.green)
                 .background(Color.white)
         }
@@ -32,7 +33,7 @@ struct GreenPlayButton: View {
 
 struct GreenPlayButton_Previews: PreviewProvider {
     static var previews: some View {
-        GreenPlayButton {
+        GreenPlayButton(width: 32) {
             
         }
     }
