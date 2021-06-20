@@ -66,12 +66,13 @@
 		475798CD266F0F7F00AADF2F /* WebAPIPlaylistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798CC266F0F7F00AADF2F /* WebAPIPlaylistObject.swift */; };
 		475798CF266F101600AADF2F /* WebAPIPublicUserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798CE266F101600AADF2F /* WebAPIPublicUserObject.swift */; };
 		475798D1266F103100AADF2F /* WebAPIPlaylistTrackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */; };
-		475798D3266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */; };
+		475798D3266F12EB00AADF2F /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D2266F12EB00AADF2F /* RecommendationsResponse.swift */; };
 		475798D5266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */; };
 		475EE242267C9306007BEBDC /* ShortcutGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE241267C9306007BEBDC /* ShortcutGrid.swift */; };
 		475EE244267D6659007BEBDC /* ShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE243267D6659007BEBDC /* ShortcutItem.swift */; };
 		475EE248267D7784007BEBDC /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE247267D7784007BEBDC /* SearchField.swift */; };
 		475EE24A267DA451007BEBDC /* GreenPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE249267DA451007BEBDC /* GreenPlayButton.swift */; };
+		475EE24C267EBDE7007BEBDC /* SearchResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE24B267EBDE7007BEBDC /* SearchResultsResponse.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,12 +138,13 @@
 		475798CC266F0F7F00AADF2F /* WebAPIPlaylistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistObject.swift; sourceTree = "<group>"; };
 		475798CE266F101600AADF2F /* WebAPIPublicUserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPublicUserObject.swift; sourceTree = "<group>"; };
 		475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistTrackObject.swift; sourceTree = "<group>"; };
-		475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedRecommendationsResponse.swift; sourceTree = "<group>"; };
+		475798D2266F12EB00AADF2F /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
 		475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPlaylistTracksRefObject.swift; sourceTree = "<group>"; };
 		475EE241267C9306007BEBDC /* ShortcutGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutGrid.swift; sourceTree = "<group>"; };
 		475EE243267D6659007BEBDC /* ShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutItem.swift; sourceTree = "<group>"; };
 		475EE247267D7784007BEBDC /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		475EE249267DA451007BEBDC /* GreenPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenPlayButton.swift; sourceTree = "<group>"; };
+		475EE24B267EBDE7007BEBDC /* SearchResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsResponse.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -310,7 +312,8 @@
 				475798C0266E2DD700AADF2F /* RecommendationGroup.swift */,
 				475798C2266E309A00AADF2F /* RecommendationItem.swift */,
 				475798C4266E348200AADF2F /* RecommendationLink.swift */,
-				475798D2266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift */,
+				475798D2266F12EB00AADF2F /* RecommendationsResponse.swift */,
+				475EE24B267EBDE7007BEBDC /* SearchResultsResponse.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				470201CC265CF9610030ECA9 /* RepeatButton.swift in Sources */,
 				4730618B26591E36001E3A1F /* CoverGroupObject.swift in Sources */,
 				475EE242267C9306007BEBDC /* ShortcutGrid.swift in Sources */,
+				475EE24C267EBDE7007BEBDC /* SearchResultsResponse.swift in Sources */,
 				4730618926591E16001E3A1F /* DateObject.swift in Sources */,
 				4730616826565B03001E3A1F /* PlayPauseButton.swift in Sources */,
 				4730616326565828001E3A1F /* Search.swift in Sources */,
@@ -460,7 +464,7 @@
 				473061852659164E001E3A1F /* AlbumObject.swift in Sources */,
 				474BAFB8266876030006EB16 /* VolumeSlider.swift in Sources */,
 				4730619D26592023001E3A1F /* PlaybackPausedEvent.swift in Sources */,
-				475798D3266F12EB00AADF2F /* PersonalizedRecommendationsResponse.swift in Sources */,
+				475798D3266F12EB00AADF2F /* RecommendationsResponse.swift in Sources */,
 				475798D1266F103100AADF2F /* WebAPIPlaylistTrackObject.swift in Sources */,
 				475798CF266F101600AADF2F /* WebAPIPublicUserObject.swift in Sources */,
 				4730618F26591E9C001E3A1F /* ContextChangedEvent.swift in Sources */,
