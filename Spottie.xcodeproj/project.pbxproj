@@ -74,6 +74,7 @@
 		475EE24A267DA451007BEBDC /* GreenPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE249267DA451007BEBDC /* GreenPlayButton.swift */; };
 		475EE24C267EBDE7007BEBDC /* SearchResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE24B267EBDE7007BEBDC /* SearchResultsResponse.swift */; };
 		475EE24F267EBFEA007BEBDC /* WebAPIPagingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE24E267EBFEA007BEBDC /* WebAPIPagingObject.swift */; };
+		4764B39D26833B9900AE471E /* HoverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B39C26833B9900AE471E /* HoverState.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		475EE249267DA451007BEBDC /* GreenPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenPlayButton.swift; sourceTree = "<group>"; };
 		475EE24B267EBDE7007BEBDC /* SearchResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsResponse.swift; sourceTree = "<group>"; };
 		475EE24E267EBFEA007BEBDC /* WebAPIPagingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPagingObject.swift; sourceTree = "<group>"; };
+		4764B39C26833B9900AE471E /* HoverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverState.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -320,6 +322,7 @@
 				475EE243267D6659007BEBDC /* ShortcutItem.swift */,
 				475EE247267D7784007BEBDC /* SearchField.swift */,
 				475EE249267DA451007BEBDC /* GreenPlayButton.swift */,
+				4764B39C26833B9900AE471E /* HoverState.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				4730616526565841001E3A1F /* Library.swift in Sources */,
 				4730619926591F92001E3A1F /* VolumeChangedEvent.swift in Sources */,
 				4730619726591F14001E3A1F /* MetadataAvailableEvent.swift in Sources */,
+				4764B39D26833B9900AE471E /* HoverState.swift in Sources */,
 				4730617B265903A6001E3A1F /* EventBroker.swift in Sources */,
 				470201CA265CF9380030ECA9 /* ShuffleButton.swift in Sources */,
 				4730619326591EE1001E3A1F /* TrackChangedEvent.swift in Sources */,

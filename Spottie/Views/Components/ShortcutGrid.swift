@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ShortcutGrid: View {
-    let items: [RecommendationItem]
+    let items: [CarouselRowItem.ViewModel]
     let onItemPressed: (String) -> Void
     var gridItemLayout = Array(repeating: GridItem(.flexible(), spacing: 20), count: 3)
 
@@ -22,7 +22,7 @@ struct ShortcutGrid: View {
                 ForEach(items) { item in
                     ShortcutItem(
                         itemHeight: 80,
-                        viewModel: ShortcutItem.ViewModel(item),
+                        viewModel: item,
                         onPlayButtonPressed: {
                             onItemPressed(item.id)
                         }

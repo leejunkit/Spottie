@@ -27,21 +27,19 @@ struct Home: View {
             ScrollView(.vertical) {
                 if searchText.isEmpty {
                     LazyVStack(alignment: .leading) {
-                        ForEach(viewModel.recommendationGroups) { group in
-                            if group.id == "shortcuts" {
+                        ForEach(viewModel.rowViewModels) { vm in
+                            if vm.id == "shortcuts" {
                                 ShortcutGrid(
-                                    items: group.items,
+                                    items: vm.items,
                                     onItemPressed: viewModel.load
                                 )
                                     .padding()
-                            } else if group.items.count > 0 {
-                                let vm = CarouselRow.ViewModel.init(group,
-                                    numberOfItemsToShow: numberOfItemsToShowInRow(reader)
-                                )
-                                
+                            } else if vm.items.count > 0 {
+                                let numItemsToShow = numberOfItemsToShowInRow(reader)
                                 CarouselRow(
                                     viewModel: vm,
-                                    onItemPressed: viewModel.load
+                                    onItemPressed: viewModel.load,
+                                    numItemsToShow: numItemsToShow
                                 )
                                     .padding()
                             }
@@ -74,11 +72,69 @@ struct Home: View {
 
 extension Home {
     class ViewModel: ObservableObject {
-        @Published var recommendationGroups: [RecommendationGroup] = []
+        @Published var rowViewModels: [CarouselRow.ViewModel] = []
         private var cancellables = [AnyCancellable]()
+        
         init() {
             SpotifyAPI.getPersonalizedRecommendations().sink { _ in } receiveValue: { response in
-                self.recommendationGroups = response!.content.items
+                let recommendationGroups = response!.content.items
+                self.rowViewModels = recommendationGroups.map { group in
+                    if group.id.hasPrefix("podcast") {
+                        return CarouselRow.ViewModel(
+                            id: group.id,
+                            title: group.name,
+                            subtitle: group.tagline ?? "",
+                            items: []
+                        )
+                    }
+                    
+                    let items = group.items.map { item -> CarouselRowItem.ViewModel in
+                        let id = item.id
+                        var title = ""
+                        var subtitle = ""
+                        var artworkURL = URL(string: "https://misc.scdn.co/liked-songs/liked-songs-640.png")!
+                        var artworkIsCircle = false
+                        
+                        if let data = item.data {
+                            switch data {
+                            case let .album(album):
+                                title = album.name
+                                subtitle = album.artists[0].name
+                                artworkURL = album.getArtworkURL()!
+                            case let .artist(artist):
+                                title = artist.name
+                                subtitle = "Artist"
+                                artworkURL = URL(string: artist.images[0].url)!
+                                artworkIsCircle = true
+                            case let .playlist(playlist):
+                                title = playlist.name
+                                subtitle = playlist.description ?? ""
+                                artworkURL = URL(string: playlist.images[0].url)!
+                            case let .link(link):
+                                title = link.name
+                                subtitle = ""
+                                artworkURL = URL(string: link.images[0].url)!
+                            }
+                        }
+                        
+                        return CarouselRowItem.ViewModel(
+                            id: id,
+                            title: title,
+                            subtitle: subtitle,
+                            artworkURL: artworkURL,
+                            artworkIsCircle: artworkIsCircle
+                        )
+                    }
+                    
+                    let vm = CarouselRow.ViewModel(
+                        id: group.id,
+                        title: group.name,
+                        subtitle: group.tagline ?? "",
+                        items: items
+                    )
+                    
+                    return vm
+                }
             }.store(in: &cancellables)
         }
         

@@ -35,6 +35,7 @@ extension Search {
                 }
                 .switchToLatest()
                 .receive(on: DispatchQueue.main)
+                
                 .assign(to: &$results)
         }
     }
