@@ -105,7 +105,7 @@ extension SpotifyAPI {
         return client.run(req).map(\.value).eraseToAnyPublisher()
     }
     
-    static func getPersonalizedRecommendations() -> AnyPublisher<PersonalizedRecommendationsResponse?, Error> {
+    static func getPersonalizedRecommendations() -> AnyPublisher<RecommendationsResponse?, Error> {
         // get the current date
         let date = Date()
         let formatter = ISO8601DateFormatter()
@@ -137,9 +137,9 @@ extension SpotifyAPI {
         return client.run(req, decoder).map(\.value).eraseToAnyPublisher()
     }
     
-    static func search() -> AnyPublisher<SearchResultsResponse, Error> {
+    static func search(_ term: String) -> AnyPublisher<SearchResultsResponse?, Error> {
         let queryItems = [
-            URLQueryItem(name: "q", value: "akmu"),
+            URLQueryItem(name: "q", value: term),
             URLQueryItem(name: "type", value: "album,artist,playlist,track"),
             URLQueryItem(name: "market", value: "from_token")
         ]
@@ -155,6 +155,6 @@ extension SpotifyAPI {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase;
         
-        return client.run(req, decoder).map(\.value).eraseToAnyPublisher()
+        return client.run(req, decoder).map(\.value).print().eraseToAnyPublisher()
     }
 }

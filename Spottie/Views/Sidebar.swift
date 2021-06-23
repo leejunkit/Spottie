@@ -17,15 +17,7 @@ struct Sidebar: View {
                 tag: Screen.home,
                 selection: $state,
                 label: {
-                    Label("Home", systemImage: "house" )
-                }
-            )
-            NavigationLink(
-                destination: Search(),
-                tag: Screen.search,
-                selection: $state,
-                label: {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Home", systemImage: "house")
                 }
             )
             NavigationLink(
@@ -38,7 +30,6 @@ struct Sidebar: View {
             )
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle("Spottie")
     }
 }
 

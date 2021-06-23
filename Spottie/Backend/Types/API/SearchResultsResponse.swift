@@ -9,7 +9,7 @@ import Foundation
 
 struct SearchResultsResponse: Decodable {
     let albums: WebAPIPagingObject<WebAPISimplifiedAlbumObject>
-    let artists: WebAPIPagingObject<WebAPISimplifiedAlbumObject>
+    let artists: WebAPIPagingObject<WebAPISimplifiedArtistObject>
     let tracks: WebAPIPagingObject<WebAPITrackObject>
     let playlists: WebAPIPagingObject<WebAPIPlaylistObject>
 }

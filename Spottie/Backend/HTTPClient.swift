@@ -9,8 +9,13 @@ import Foundation
 import Combine
 
 struct HTTPClient {
+    enum APIError: Error {
+        case unknown
+        case contentTypeError
+    }
+    
     struct Response<T> {
-        let value: T?
+        let value: T
         let response: URLResponse
     }
     
@@ -18,6 +23,10 @@ struct HTTPClient {
         return URLSession.shared
             .dataTaskPublisher(for: request)
             .tryMap { result -> Response<T> in
+                if T.self == Nothing.self {
+                    return Response(value: Nothing() as! T, response: result.response)
+                }
+                
                 let response = result.response as! HTTPURLResponse
                 let contentType = response.allHeaderFields["Content-Type"] as? String
                 
@@ -27,10 +36,16 @@ struct HTTPClient {
                         return Response(value: value, response: result.response)
                     }
                 }
-
-                return Response(value: nil, response: result.response)
+                
+                throw APIError.contentTypeError
             }
             .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func runWithoutDecoding(_ request: URLRequest) -> AnyPublisher<Never, URLError> {
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .ignoreOutput()
             .eraseToAnyPublisher()
     }
 }

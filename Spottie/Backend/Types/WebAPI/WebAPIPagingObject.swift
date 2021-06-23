@@ -13,6 +13,6 @@ struct WebAPIPagingObject<T: Decodable>: Decodable {
     let limit: Int
     let offset: Int
     let total: Int
-    let next: String
-    let previous: String
+    let next: String?
+    let previous: String?
 }
