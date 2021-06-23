@@ -30,7 +30,11 @@ struct WebAPISimplifiedAlbumObject: Codable {
     var releaseDatePrecision: ReleaseDatePrecision
     var totalTracks: Int
     
-    func getArtworkURL() -> URL? {
-        return URL(string: self.images[0].url)
+    func getArtworkURL() -> URL {
+        if (self.images.isEmpty) {
+            return URL(string: "https://misc.scdn.co/liked-songs/liked-songs-640.png")!
+        }
+        
+        return URL(string: self.images[0].url)!
     }
 }

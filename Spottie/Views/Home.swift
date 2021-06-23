@@ -24,6 +24,8 @@ struct Home: View {
     
     var body: some View {
         GeometryReader { reader in
+            let numItemsToShow = numberOfItemsToShowInRow(reader)
+            
             ScrollView(.vertical) {
                 if searchText.isEmpty {
                     LazyVStack(alignment: .leading) {
@@ -35,7 +37,6 @@ struct Home: View {
                                 )
                                     .padding()
                             } else if vm.items.count > 0 {
-                                let numItemsToShow = numberOfItemsToShowInRow(reader)
                                 CarouselRow(
                                     viewModel: vm,
                                     onItemPressed: viewModel.load,
@@ -46,7 +47,10 @@ struct Home: View {
                         }
                     }
                 } else {
-                    Search(viewModel: Search.ViewModel(searchTermPublisher: debouncedPublisher))
+                    Search(
+                        viewModel: Search.ViewModel(searchTermPublisher: debouncedPublisher),
+                        numItemsPerRow: numItemsToShow
+                    )
                 }
             }
         }
@@ -100,16 +104,16 @@ extension Home {
                             case let .album(album):
                                 title = album.name
                                 subtitle = album.artists[0].name
-                                artworkURL = album.getArtworkURL()!
+                                artworkURL = album.getArtworkURL()
                             case let .artist(artist):
                                 title = artist.name
                                 subtitle = "Artist"
-                                artworkURL = URL(string: artist.images[0].url)!
+                                artworkURL = artist.getArtworkURL()
                                 artworkIsCircle = true
                             case let .playlist(playlist):
                                 title = playlist.name
                                 subtitle = playlist.description ?? ""
-                                artworkURL = URL(string: playlist.images[0].url)!
+                                artworkURL = playlist.getArtworkURL()
                             case let .link(link):
                                 title = link.name
                                 subtitle = ""
