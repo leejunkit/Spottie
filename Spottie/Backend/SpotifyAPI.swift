@@ -145,7 +145,7 @@ extension SpotifyAPI {
         ]
         
         var urlComponents = URLComponents(
-            url: base.appendingPathComponent("/web-api/v1/search"),
+            url: URL(string: "https://api.spotify.com/v1/search")!,
             resolvingAgainstBaseURL: false)!
         urlComponents.queryItems = queryItems
         
@@ -155,6 +155,22 @@ extension SpotifyAPI {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase;
         
-        return client.run(req, decoder).map(\.value).print().eraseToAnyPublisher()
+        // librespot-java web-api proxy has a bug where it doubly-percent encodes
+        // so we grab the token and perform the search ourselves
+        return
+            token("user-read-private")
+            .flatMap { tokenObj -> AnyPublisher<HTTPClient.Response<SearchResultsResponse?>, Error> in
+                let token = tokenObj!.token
+                req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                return client.run(req, decoder)
+            }
+            .map(\.value)
+            .eraseToAnyPublisher()
+    }
+    
+    static func token(_ scopes: String) -> AnyPublisher<TokenObject?, Error> {
+        var req = URLRequest(url: base.appendingPathComponent("/token/\(scopes)"))
+        req.httpMethod = "POST"
+        return client.run(req).print().map(\.value).eraseToAnyPublisher()
     }
 }

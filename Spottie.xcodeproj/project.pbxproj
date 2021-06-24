@@ -75,6 +75,9 @@
 		475EE24C267EBDE7007BEBDC /* SearchResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE24B267EBDE7007BEBDC /* SearchResultsResponse.swift */; };
 		475EE24F267EBFEA007BEBDC /* WebAPIPagingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475EE24E267EBFEA007BEBDC /* WebAPIPagingObject.swift */; };
 		4764B39D26833B9900AE471E /* HoverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B39C26833B9900AE471E /* HoverState.swift */; };
+		4764B39F2684001A00AE471E /* TokenObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B39E2684001A00AE471E /* TokenObject.swift */; };
+		4764B3A1268407C600AE471E /* TrackListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B3A0268407C600AE471E /* TrackListItem.swift */; };
+		4764B3A526842ECA00AE471E /* WebAPIImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B3A426842ECA00AE471E /* WebAPIImageCollection.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +152,9 @@
 		475EE24B267EBDE7007BEBDC /* SearchResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsResponse.swift; sourceTree = "<group>"; };
 		475EE24E267EBFEA007BEBDC /* WebAPIPagingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIPagingObject.swift; sourceTree = "<group>"; };
 		4764B39C26833B9900AE471E /* HoverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverState.swift; sourceTree = "<group>"; };
+		4764B39E2684001A00AE471E /* TokenObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenObject.swift; sourceTree = "<group>"; };
+		4764B3A0268407C600AE471E /* TrackListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListItem.swift; sourceTree = "<group>"; };
+		4764B3A426842ECA00AE471E /* WebAPIImageCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIImageCollection.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -296,6 +302,7 @@
 				4730618A26591E36001E3A1F /* CoverGroupObject.swift */,
 				4730618C26591E50001E3A1F /* ImageObject.swift */,
 				474BAFBB2668B0170006EB16 /* RepeatMode.swift */,
+				4764B39E2684001A00AE471E /* TokenObject.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -323,6 +330,7 @@
 				475EE247267D7784007BEBDC /* SearchField.swift */,
 				475EE249267DA451007BEBDC /* GreenPlayButton.swift */,
 				4764B39C26833B9900AE471E /* HoverState.swift */,
+				4764B3A0268407C600AE471E /* TrackListItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -341,6 +349,7 @@
 				475798D0266F103100AADF2F /* WebAPIPlaylistTrackObject.swift */,
 				475798D4266F1B9B00AADF2F /* WebAPIPlaylistTracksRefObject.swift */,
 				475EE24E267EBFEA007BEBDC /* WebAPIPagingObject.swift */,
+				4764B3A426842ECA00AE471E /* WebAPIImageCollection.swift */,
 			);
 			path = WebAPI;
 			sourceTree = "<group>";
@@ -445,6 +454,7 @@
 				4730618926591E16001E3A1F /* DateObject.swift in Sources */,
 				4730616826565B03001E3A1F /* PlayPauseButton.swift in Sources */,
 				4730616326565828001E3A1F /* Search.swift in Sources */,
+				4764B3A526842ECA00AE471E /* WebAPIImageCollection.swift in Sources */,
 				4730618726591DF7001E3A1F /* ArtistObject.swift in Sources */,
 				470201BF265BB4320030ECA9 /* PreviousTrackButton.swift in Sources */,
 				470201C3265CF29B0030ECA9 /* NowPlaying.swift in Sources */,
@@ -482,8 +492,10 @@
 				475798D1266F103100AADF2F /* WebAPIPlaylistTrackObject.swift in Sources */,
 				475798CF266F101600AADF2F /* WebAPIPublicUserObject.swift in Sources */,
 				4730618F26591E9C001E3A1F /* ContextChangedEvent.swift in Sources */,
+				4764B3A1268407C600AE471E /* TrackListItem.swift in Sources */,
 				474BAFC1266B84CD0006EB16 /* CarouselRow.swift in Sources */,
 				4730616526565841001E3A1F /* Library.swift in Sources */,
+				4764B39F2684001A00AE471E /* TokenObject.swift in Sources */,
 				4730619926591F92001E3A1F /* VolumeChangedEvent.swift in Sources */,
 				4730619726591F14001E3A1F /* MetadataAvailableEvent.swift in Sources */,
 				4764B39D26833B9900AE471E /* HoverState.swift in Sources */,

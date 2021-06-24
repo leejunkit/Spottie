@@ -10,29 +10,26 @@ import SDWebImageSwiftUI
 
 struct ShortcutGrid: View {
     let items: [CarouselRowItem.ViewModel]
-    let onItemPressed: (String) -> Void
+    let onItemPlayButtonTapped: (String) -> Void
+    let onItemTapped: (String) -> Void
     var gridItemLayout = Array(repeating: GridItem(.flexible(), spacing: 20), count: 3)
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Good Morning")
-                .font(.largeTitle).bold()
-                .padding(.leading)
-            LazyVGrid(columns: gridItemLayout, spacing: 20) {
-                ForEach(items) { item in
-                    ShortcutItem(
-                        itemHeight: 80,
-                        viewModel: item,
-                        onPlayButtonPressed: {
-                            onItemPressed(item.id)
-                        }
-                    )
-                    .frame(height: 80)
+        LazyVGrid(columns: gridItemLayout, spacing: 20) {
+            ForEach(items) { item in
+                ShortcutItem(
+                    itemHeight: 80,
+                    viewModel: item,
+                    onPlayButtonPressed: {
+                        onItemPlayButtonTapped(item.uri)
+                    }
+                )
+                .frame(height: 80)
+                .onTapGesture {
+                    onItemTapped(item.uri)
                 }
             }
-            .padding([.leading, .trailing])
         }
-        
     }
 }
 

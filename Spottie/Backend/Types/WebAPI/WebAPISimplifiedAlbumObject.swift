@@ -19,7 +19,7 @@ enum ReleaseDatePrecision: String, Codable {
     case day
 }
 
-struct WebAPISimplifiedAlbumObject: Codable {
+struct WebAPISimplifiedAlbumObject: Decodable, WebAPIImageCollection {
     var id: String
     var uri: String
     var albumType: AlbumType
@@ -29,12 +29,4 @@ struct WebAPISimplifiedAlbumObject: Codable {
     var releaseDate: String
     var releaseDatePrecision: ReleaseDatePrecision
     var totalTracks: Int
-    
-    func getArtworkURL() -> URL {
-        if (self.images.isEmpty) {
-            return URL(string: "https://misc.scdn.co/liked-songs/liked-songs-640.png")!
-        }
-        
-        return URL(string: self.images[0].url)!
-    }
 }

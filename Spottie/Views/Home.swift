@@ -22,6 +22,14 @@ struct Home: View {
             .eraseToAnyPublisher()
     }
     
+    func onItemTapped(id: String) -> Void {
+        
+    }
+    
+    func onItemPlayButtonTapped(id: String) -> Void {
+        viewModel.load(id)
+    }
+    
     var body: some View {
         GeometryReader { reader in
             let numItemsToShow = numberOfItemsToShowInRow(reader)
@@ -29,27 +37,27 @@ struct Home: View {
             ScrollView(.vertical) {
                 if searchText.isEmpty {
                     LazyVStack(alignment: .leading) {
+                        Text("Good Morning")
+                            .font(.largeTitle).bold()
+                            .padding(.leading)
                         ForEach(viewModel.rowViewModels) { vm in
-                            if vm.id == "shortcuts" {
-                                ShortcutGrid(
-                                    items: vm.items,
-                                    onItemPressed: viewModel.load
-                                )
-                                    .padding()
-                            } else if vm.items.count > 0 {
+                            if !vm.items.isEmpty {
                                 CarouselRow(
                                     viewModel: vm,
-                                    onItemPressed: viewModel.load,
-                                    numItemsToShow: numItemsToShow
+                                    numItemsToShow: numItemsToShow,
+                                    onItemTapped: onItemTapped,
+                                    onItemPlayButtonTapped: onItemPlayButtonTapped
                                 )
-                                    .padding()
+                                .padding()
                             }
                         }
                     }
                 } else {
                     Search(
                         viewModel: Search.ViewModel(searchTermPublisher: debouncedPublisher),
-                        numItemsPerRow: numItemsToShow
+                        numItemsPerRow: numItemsToShow,
+                        onItemTapped: onItemTapped,
+                        onItemPlayButtonTapped: onItemPlayButtonTapped
                     )
                 }
             }
@@ -86,6 +94,7 @@ extension Home {
                     if group.id.hasPrefix("podcast") {
                         return CarouselRow.ViewModel(
                             id: group.id,
+                            type: .grid,
                             title: group.name,
                             subtitle: group.tagline ?? "",
                             items: []
@@ -94,6 +103,7 @@ extension Home {
                     
                     let items = group.items.map { item -> CarouselRowItem.ViewModel in
                         let id = item.id
+                        var uri = ""
                         var title = ""
                         var subtitle = ""
                         var artworkURL = URL(string: "https://misc.scdn.co/liked-songs/liked-songs-640.png")!
@@ -102,18 +112,21 @@ extension Home {
                         if let data = item.data {
                             switch data {
                             case let .album(album):
+                                uri = album.uri
                                 title = album.name
-                                subtitle = album.artists[0].name
-                                artworkURL = album.getArtworkURL()
+                                subtitle = album.artists.map({$0.name}).joined(separator: ", ")
+                                artworkURL = album.getImageURL(.large)
                             case let .artist(artist):
+                                uri = artist.uri
                                 title = artist.name
                                 subtitle = "Artist"
-                                artworkURL = artist.getArtworkURL()
+                                artworkURL = artist.getImageURL(.large)
                                 artworkIsCircle = true
                             case let .playlist(playlist):
+                                uri = playlist.uri
                                 title = playlist.name
-                                subtitle = playlist.description ?? ""
-                                artworkURL = playlist.getArtworkURL()
+                                subtitle = playlist.description ?? "\(playlist.tracks.total) tracks, by \(playlist.owner.displayName ?? "an unnamed user")"
+                                artworkURL = playlist.getImageURL(.large)
                             case let .link(link):
                                 title = link.name
                                 subtitle = ""
@@ -123,6 +136,7 @@ extension Home {
                         
                         return CarouselRowItem.ViewModel(
                             id: id,
+                            uri: uri,
                             title: title,
                             subtitle: subtitle,
                             artworkURL: artworkURL,
@@ -132,6 +146,7 @@ extension Home {
                     
                     let vm = CarouselRow.ViewModel(
                         id: group.id,
+                        type: group.id == "shortcuts" ? .shortcuts : .grid,
                         title: group.name,
                         subtitle: group.tagline ?? "",
                         items: items

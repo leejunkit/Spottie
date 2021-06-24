@@ -27,17 +27,14 @@ struct HTTPClient {
                     return Response(value: Nothing() as! T, response: result.response)
                 }
                 
+                // check for empty body
                 let response = result.response as! HTTPURLResponse
-                let contentType = response.allHeaderFields["Content-Type"] as? String
-                
-                if let contentType = contentType {
-                    if contentType.contains("application/json") {
-                        let value = try decoder.decode(T.self, from: result.data)
-                        return Response(value: value, response: result.response)
-                    }
+                if response.statusCode == 204 {
+                    throw APIError.contentTypeError
                 }
                 
-                throw APIError.contentTypeError
+                let value = try decoder.decode(T.self, from: result.data)
+                return Response(value: value, response: result.response)
             }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

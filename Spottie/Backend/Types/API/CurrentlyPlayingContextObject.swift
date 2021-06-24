@@ -11,7 +11,7 @@ enum RepeatState: String, Codable {
     case context
 }
 
-struct CurrentlyPlayingContextObject: Codable {
+struct CurrentlyPlayingContextObject: Decodable {
     var device: WebAPIDeviceObject
     var isPlaying: Bool
     var shuffleState: Bool

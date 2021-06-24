@@ -42,9 +42,11 @@ struct CarouselRowItem: View {
                 .foregroundColor(.primary)
                 .font(.headline)
                 .padding(.vertical, 4)
-            Text(vm.subtitle)
-                .lineLimit(2)
-                .foregroundColor(.secondary)
+            vm.subtitle.map {
+                Text($0)
+                    .lineLimit(2)
+                    .foregroundColor(.secondary)
+            }
         }
         .frame(maxWidth: 200)
         .padding()
@@ -62,10 +64,12 @@ struct CarouselRowItem: View {
 extension CarouselRowItem {
     struct ViewModel: Identifiable {
         var id: String
+        var uri: String
         var title: String
-        var subtitle: String
+        var subtitle: String?
         var artworkURL: URL
         var artworkIsCircle = false
+        var duration: Int? // for track list items only: is there a better way?
     }
 }
 

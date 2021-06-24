@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CarouselRow: View {
     let viewModel: ViewModel
-    let onItemPressed: (String) -> Void
     let numItemsToShow: Int
+    let onItemTapped: (String) -> Void
+    let onItemPlayButtonTapped: (String) -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,27 +25,62 @@ struct CarouselRow: View {
                     .padding(.leading)
                     .padding(.bottom, 8)
             })
-            HStack(alignment: .top, spacing: 40) {
-                ForEach(viewModel.getItemsToShow(requestedNumToShow: numItemsToShow)) { item in
-                    CarouselRowItem(
-                        vm: item,
-                        onPlayButtonPressed: {
-                            onItemPressed(item.id)
-                        })
-                        .onTapGesture {
-                            print("unimplemented")
-                        }
+            
+            if viewModel.items.isEmpty {
+                HStack {
+                    Text("No items to show")
+                        .foregroundColor(.secondary)
                 }
+                .padding()
             }
-            .padding([.leading, .trailing])
+            
+            switch viewModel.type {
+            case .grid:
+                HStack(alignment: .top, spacing: 40) {
+                    ForEach(viewModel.getItemsToShow(requestedNumToShow: numItemsToShow)) { item in
+                        CarouselRowItem(
+                            vm: item,
+                            onPlayButtonPressed: {
+                                onItemPlayButtonTapped(item.uri)
+                            })
+                            .onTapGesture {
+                                onItemTapped(item.uri)
+                            }
+                    }
+                }
+                .padding([.leading, .trailing])
+            case .shortcuts:
+                ShortcutGrid(
+                    items: viewModel.items,
+                    onItemPlayButtonTapped: onItemPlayButtonTapped,
+                    onItemTapped: onItemTapped
+                )
+                .padding([.leading, .trailing])
+            case .trackList:
+                LazyVStack {
+                    ForEach(viewModel.getItemsToShow(requestedNumToShow: 8)) { item in
+                        TrackListItem(viewModel: item)
+                            .onTapGesture(count: 2) {
+                                onItemPlayButtonTapped(item.uri)
+                            }
+                    }
+                }
+                .padding([.leading, .trailing])
+            }
         }
-        
     }
 }
 
 extension CarouselRow {
+    enum RowType {
+        case shortcuts
+        case trackList
+        case grid
+    }
+    
     struct ViewModel: Identifiable {
         var id: String
+        var type: RowType
         var title: String
         var subtitle: String?
         var items: [CarouselRowItem.ViewModel]

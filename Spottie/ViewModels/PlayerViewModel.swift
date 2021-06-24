@@ -53,7 +53,7 @@ class PlayerViewModel: PlayerStateProtocol {
         self.isPlaying = ctx.isPlaying
         self.trackName = ctx.item.name
         self.artistName = ctx.item.artists[0].name
-        self.artworkURL = ctx.item.album.getArtworkURL()
+        self.artworkURL = ctx.item.album.getImageURL(.medium)
         self.durationMs = ctx.item.durationMs
         self.progressMs = ctx.progressMs
     }

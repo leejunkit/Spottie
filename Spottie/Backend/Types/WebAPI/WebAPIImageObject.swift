@@ -5,8 +5,14 @@
 //  Created by Lee Jun Kit on 24/5/21.
 //
 
-struct WebAPIImageObject: Codable {
-    var url: String
-    var width: Int?
-    var height: Int?
+import Foundation
+
+struct WebAPIImageObject: Decodable {
+    enum ImageSize {
+        case small, medium, large
+    }
+    
+    let url: String
+    let width: Int?
+    let height: Int?
 }

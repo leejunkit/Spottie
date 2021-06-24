@@ -5,7 +5,7 @@
 //  Created by Lee Jun Kit on 24/5/21.
 //
 
-struct WebAPITrackObject: Codable {
+struct WebAPITrackObject: Decodable {
     var id: String
     var uri: String
     var album: WebAPISimplifiedAlbumObject
