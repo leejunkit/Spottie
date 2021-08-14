@@ -32,9 +32,8 @@ struct PlayerControls<M: PlayerStateProtocol>: View {
                     onRepeatButtonTapped: viewModel.cycleRepeatMode
                 )
             }
-            TrackProgressSlider(viewModel: TrackProgressSlider.ViewModel(isPlaying: viewModel.isPlaying, progressMs: viewModel.progressMs, durationMs: viewModel.durationMs, onScrubToNewProgressPercent: viewModel.seek))
-                .padding(.leading)
-                .padding(.trailing)
+            TrackProgressSlider()
+                .padding([.leading, .trailing])
         }
     }
 }

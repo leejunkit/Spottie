@@ -13,39 +13,67 @@ class PlayerViewModel: PlayerStateProtocol {
     @Published var isPlaying = false
     @Published var durationMs = 1
     @Published var progressMs = 0
+    @Published var progressPercent = 0.0
     @Published var trackName = ""
     @Published var artistName = ""
     @Published var artworkURL: URL?
     @Published var isShuffling = false
     @Published var repeatMode = RepeatMode.none
+    @Published var isScrubbing = false
     
     private var cancellables = [AnyCancellable]()
     private var eventBroker: EventBroker
     
+    private var timerPublisher = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private var timerSubscription: AnyCancellable?
+    
     init(_ eventBroker: EventBroker) {
         self.eventBroker = eventBroker
-        let token = SpotifyAPI.currentPlayerState().sink(receiveCompletion: {[weak self] status in
-            if case .failure(let error) = status {
-                print(error)
-            } else {
-                guard let self = self else { return }
-                
-                // subscribe to events
-                eventBroker.onEventReceived.sink(receiveValue: {[weak self] event in
-                    guard let self = self else { return }
-                    self.onEventReceived(event: event)
-                }).store(in: &self.cancellables)
-            }
-        }) {[weak self] context in
-            guard let self = self else { return }
+        SpotifyAPI.currentPlayerState().sink(receiveCompletion: {_ in
+            // subscribe to events
+            eventBroker.onEventReceived.sink(receiveValue: { [weak self] event in
+                self?.onEventReceived(event: event)
+            }).store(in: &self.cancellables)
+        }) { [weak self] context in
             if let ctx = context {
-                self.handleInitialStateUpdate(context: ctx)
+                self?.handleInitialStateUpdate(context: ctx)
+            }
+        }.store(in: &cancellables)
+        
+        // progress timer to activate only when isPlaying is true
+        $isPlaying.sink { [weak self] playing in
+            guard let strongSelf = self else { return }
+            
+            if playing {
+                if strongSelf.timerSubscription == nil {
+                    strongSelf.timerSubscription = strongSelf.timerPublisher.sink { _ in
+                        if !strongSelf.isScrubbing {
+                            strongSelf.progressMs += 1000
+                        }
+                    }
+                }
+            } else {
+                strongSelf.timerSubscription?.cancel()
+                strongSelf.timerSubscription = nil
+            }
+        }.store(in: &cancellables)
+        
+        // derive percent progress
+        Publishers.CombineLatest($progressMs, $durationMs)
+        .map({ progressMs, durationMs -> Double in
+            if durationMs == 0 {
+                return 0.0
+            } else {
+                return Double(progressMs) / Double(durationMs)
+            }
+        })
+        .sink { [weak self] pc in
+            guard let strongSelf = self else { return }
+            if !strongSelf.isScrubbing {
+                strongSelf.progressPercent = pc
             }
         }
-        
-        token.store(in: &cancellables)
-        
-        
+        .store(in: &cancellables)
     }
     
     func handleInitialStateUpdate(context ctx: CurrentlyPlayingContextObject) {

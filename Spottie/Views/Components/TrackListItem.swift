@@ -44,23 +44,6 @@ struct TrackListItem: View {
     }
 }
 
-extension TrackListItem {
-    class DurationFormatter {
-        static let shared = DurationFormatter()
-        
-        private let formatter: DateComponentsFormatter
-        private init() {
-            formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.hour, .minute, .second]
-            formatter.unitsStyle = .positional
-        }
-        
-        func format(_ from: TimeInterval) -> String {
-            return formatter.string(from: from)!
-        }
-    }
-}
-
 struct TrackListItem_Previews: PreviewProvider {
     static let viewModel = CarouselRowItem.ViewModel(
         id: "abc",

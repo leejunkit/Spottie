@@ -6,33 +6,31 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TrackProgressSlider: View {
-    @ObservedObject var viewModel: TrackProgressSlider.ViewModel
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @EnvironmentObject var viewModel: PlayerViewModel
     
     var prettyProgress: String {
         get {
-            let formatter = TrackProgressSlider.DurationFormatter.shared()
-            if (self.viewModel.isScrubbing) {
-                let scrubbedProgress = self.viewModel.progressPercent * Double(self.viewModel.durationMs)
-                return formatter.string(from: scrubbedProgress / 1000.0)!
+            if (viewModel.isScrubbing) {
+                let scrubbedProgress = viewModel.progressPercent * Double(viewModel.durationMs)
+                return DurationFormatter.shared.format(scrubbedProgress / 1000.0)
             } else {
-                return formatter.string(from: Double(self.viewModel.progressMs) / 1000.0)!
+                return DurationFormatter.shared.format(Double(viewModel.progressMs) / 1000.0)
             }
         }
     }
     
     var prettyDuration: String {
         get {
-            return TrackProgressSlider.DurationFormatter.shared().string(from: Double(self.viewModel.durationMs) / 1000.0)!
+            return DurationFormatter.shared.format(Double(viewModel.durationMs) / 1000.0)
         }
     }
     
     var body: some View {
         HStack {
-            VStack(alignment: .trailing) {
+            VStack {
                 Text(prettyProgress).foregroundColor(.secondary)
             }
             .frame(width: 40)
@@ -42,14 +40,12 @@ struct TrackProgressSlider: View {
                 in: 0...1,
                 onEditingChanged: { editing in
                     if (!editing) {
-                        viewModel.onScrubToNewProgressPercent(viewModel.progressPercent)
+                        viewModel.seek(toPercent: viewModel.progressPercent)
                     }
+                    
                     viewModel.isScrubbing = editing
                 }
             )
-            .onReceive(timer) { _ in
-                viewModel.updateProgress()
-            }
             
             VStack(alignment: .leading) {
                 Text(prettyDuration).foregroundColor(.secondary)
@@ -59,59 +55,11 @@ struct TrackProgressSlider: View {
     }
 }
 
-extension TrackProgressSlider {
-    class DurationFormatter {
-        private static var sharedDurationFormatter: DateComponentsFormatter = {
-            let formatter = DateComponentsFormatter()
-            formatter.unitsStyle = .positional
-            formatter.allowedUnits = [ .minute, .second ]
-            formatter.zeroFormattingBehavior = [ .pad ]
-            return formatter
-        }()
-        
-        class func shared() -> DateComponentsFormatter {
-            return sharedDurationFormatter
-        }
-    }
-    
-    class ViewModel: ObservableObject {
-        @Published var isPlaying: Bool
-        @Published var progressMs: Int
-        @Published var durationMs: Int
-        @Published var progressPercent: Double
-        var isScrubbing = false
-        var onScrubToNewProgressPercent: (_ progressPercent: Double) -> Void
-        
-        init(isPlaying: Bool, progressMs: Int, durationMs: Int, onScrubToNewProgressPercent: @escaping (_ progressPercent: Double) -> Void) {
-            self.isPlaying = isPlaying
-            self.progressMs = progressMs
-            self.durationMs = durationMs
-            self.progressPercent = Double(progressMs) / Double(durationMs)
-            self.onScrubToNewProgressPercent = onScrubToNewProgressPercent
-        }
-        
-        func calculateProgressPercent() {
-            self.progressPercent = Double(self.progressMs) / Double(self.durationMs)
-        }
-        
-        func updateProgress() {
-            if (self.isPlaying) {
-                if (self.progressMs < self.durationMs) {
-                    self.progressMs += 1000
-                    if (!self.isScrubbing) {
-                        self.calculateProgressPercent()
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct TrackProgressSlider_Previews: PreviewProvider {
-    static let viewModel = TrackProgressSlider.ViewModel(isPlaying: true, progressMs: 20000, durationMs: 120000) { progressPercent in
-        
-    }
-    static var previews: some View {
-        TrackProgressSlider(viewModel: viewModel)
-    }
-}
+//struct TrackProgressSlider_Previews: PreviewProvider {
+//    static let viewModel = TrackProgressSlider.ViewModel(isPlaying: true, progressMs: 20000, durationMs: 120000) { progressPercent in
+//
+//    }
+//    static var previews: some View {
+//        TrackProgressSlider(viewModel: viewModel)
+//    }
+//}

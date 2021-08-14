@@ -78,6 +78,7 @@
 		4764B39F2684001A00AE471E /* TokenObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B39E2684001A00AE471E /* TokenObject.swift */; };
 		4764B3A1268407C600AE471E /* TrackListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B3A0268407C600AE471E /* TrackListItem.swift */; };
 		4764B3A526842ECA00AE471E /* WebAPIImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B3A426842ECA00AE471E /* WebAPIImageCollection.swift */; };
+		4764B3A82684867600AE471E /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B3A72684867600AE471E /* DurationFormatter.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +156,7 @@
 		4764B39E2684001A00AE471E /* TokenObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenObject.swift; sourceTree = "<group>"; };
 		4764B3A0268407C600AE471E /* TrackListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListItem.swift; sourceTree = "<group>"; };
 		4764B3A426842ECA00AE471E /* WebAPIImageCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIImageCollection.swift; sourceTree = "<group>"; };
+		4764B3A72684867600AE471E /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				4730616B26565EB8001E3A1F /* Backend */,
+				4764B3A62684865B00AE471E /* Utilities */,
 				4730617526588C40001E3A1F /* ViewModels */,
 				4730615D26565706001E3A1F /* Views */,
 				47C56F5E2679A779003EA20A /* Commands */,
@@ -354,6 +357,14 @@
 			path = WebAPI;
 			sourceTree = "<group>";
 		};
+		4764B3A62684865B00AE471E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4764B3A72684867600AE471E /* DurationFormatter.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		47C56F5E2679A779003EA20A /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +470,7 @@
 				470201BF265BB4320030ECA9 /* PreviousTrackButton.swift in Sources */,
 				470201C3265CF29B0030ECA9 /* NowPlaying.swift in Sources */,
 				475798C3266E309A00AADF2F /* RecommendationItem.swift in Sources */,
+				4764B3A82684867600AE471E /* DurationFormatter.swift in Sources */,
 				4730616A26565BB7001E3A1F /* BottomBar.swift in Sources */,
 				473061722656629F001E3A1F /* Nothing.swift in Sources */,
 				474BAFBC2668B0170006EB16 /* RepeatMode.swift in Sources */,
