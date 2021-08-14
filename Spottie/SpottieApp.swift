@@ -10,6 +10,10 @@ import Combine
 
 @main
 struct SpottieApp: App {
+    init() {
+        
+    }
+    
     @StateObject private var playerViewModel = PlayerViewModel(EventBroker())
     
     var body: some Scene {

@@ -80,6 +80,9 @@
 		4764B3A526842ECA00AE471E /* WebAPIImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B3A426842ECA00AE471E /* WebAPIImageCollection.swift */; };
 		4764B3A82684867600AE471E /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764B3A72684867600AE471E /* DurationFormatter.swift */; };
 		47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C56F5F2679A789003EA20A /* PlayerCommands.swift */; };
+		47F77E5C26C7D04400FC882B /* spottie_curl.c in Sources */ = {isa = PBXBuildFile; fileRef = 47F77E5B26C7D04400FC882B /* spottie_curl.c */; };
+		47F77E5F26C7D19800FC882B /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F77E5E26C7D11D00FC882B /* libcurl.tbd */; };
+		47F77E6126C7D2E000FC882B /* PlayerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77E6026C7D2E000FC882B /* PlayerCore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +161,12 @@
 		4764B3A426842ECA00AE471E /* WebAPIImageCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIImageCollection.swift; sourceTree = "<group>"; };
 		4764B3A72684867600AE471E /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 		47C56F5F2679A789003EA20A /* PlayerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCommands.swift; sourceTree = "<group>"; };
+		47F77E5926C7D04400FC882B /* Spottie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spottie-Bridging-Header.h"; sourceTree = "<group>"; };
+		47F77E5A26C7D04400FC882B /* spottie_curl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spottie_curl.h; sourceTree = "<group>"; };
+		47F77E5B26C7D04400FC882B /* spottie_curl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = spottie_curl.c; sourceTree = "<group>"; };
+		47F77E5E26C7D11D00FC882B /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
+		47F77E6026C7D2E000FC882B /* PlayerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCore.swift; sourceTree = "<group>"; };
+		47F77E6326C7D39E00FC882B /* player_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = player_core.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47F77E5F26C7D19800FC882B /* libcurl.tbd in Frameworks */,
 				470201C6265CF4560030ECA9 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,7 +186,10 @@
 			isa = PBXGroup;
 			children = (
 				4730614C265656ED001E3A1F /* Spottie */,
+				47306156265656EF001E3A1F /* Info.plist */,
+				47306157265656EF001E3A1F /* Spottie.entitlements */,
 				4730614B265656ED001E3A1F /* Products */,
+				47F77E5D26C7D11D00FC882B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,14 +205,14 @@
 			isa = PBXGroup;
 			children = (
 				4730616B26565EB8001E3A1F /* Backend */,
+				47F77E6226C7D2E600FC882B /* PlayerCore */,
 				4764B3A62684865B00AE471E /* Utilities */,
 				4730617526588C40001E3A1F /* ViewModels */,
 				4730615D26565706001E3A1F /* Views */,
 				47C56F5E2679A779003EA20A /* Commands */,
 				4730614D265656ED001E3A1F /* SpottieApp.swift */,
 				47306151265656EF001E3A1F /* Assets.xcassets */,
-				47306156265656EF001E3A1F /* Info.plist */,
-				47306157265656EF001E3A1F /* Spottie.entitlements */,
+				47F77E5926C7D04400FC882B /* Spottie-Bridging-Header.h */,
 				47306153265656EF001E3A1F /* Preview Content */,
 			);
 			path = Spottie;
@@ -247,6 +260,7 @@
 		4730616B26565EB8001E3A1F /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				47F77E5826C7D01700FC882B /* CURL */,
 				4730617026566280001E3A1F /* Types */,
 				4730616C26565ED1001E3A1F /* HTTPClient.swift */,
 				4730617326587EF6001E3A1F /* WebsocketClient.swift */,
@@ -373,6 +387,32 @@
 			path = Commands;
 			sourceTree = "<group>";
 		};
+		47F77E5826C7D01700FC882B /* CURL */ = {
+			isa = PBXGroup;
+			children = (
+				47F77E5A26C7D04400FC882B /* spottie_curl.h */,
+				47F77E5B26C7D04400FC882B /* spottie_curl.c */,
+			);
+			path = CURL;
+			sourceTree = "<group>";
+		};
+		47F77E5D26C7D11D00FC882B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47F77E5E26C7D11D00FC882B /* libcurl.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		47F77E6226C7D2E600FC882B /* PlayerCore */ = {
+			isa = PBXGroup;
+			children = (
+				47F77E6326C7D39E00FC882B /* player_core.h */,
+				47F77E6026C7D2E000FC882B /* PlayerCore.swift */,
+			);
+			path = PlayerCore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -407,6 +447,7 @@
 				TargetAttributes = {
 					47306149265656ED001E3A1F = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -481,6 +522,7 @@
 				4730618D26591E50001E3A1F /* ImageObject.swift in Sources */,
 				470201C8265CF8D90030ECA9 /* PlayerControls.swift in Sources */,
 				4730619B26591FFC001E3A1F /* TrackSeekedEvent.swift in Sources */,
+				47F77E6126C7D2E000FC882B /* PlayerCore.swift in Sources */,
 				470201B1265B54720030ECA9 /* WebAPISimplifiedAlbumObject.swift in Sources */,
 				470201B5265B56350030ECA9 /* WebAPIImageObject.swift in Sources */,
 				47C56F602679A789003EA20A /* PlayerCommands.swift in Sources */,
@@ -502,6 +544,7 @@
 				4730619D26592023001E3A1F /* PlaybackPausedEvent.swift in Sources */,
 				475798D3266F12EB00AADF2F /* RecommendationsResponse.swift in Sources */,
 				475798D1266F103100AADF2F /* WebAPIPlaylistTrackObject.swift in Sources */,
+				47F77E5C26C7D04400FC882B /* spottie_curl.c in Sources */,
 				475798CF266F101600AADF2F /* WebAPIPublicUserObject.swift in Sources */,
 				4730618F26591E9C001E3A1F /* ContextChangedEvent.swift in Sources */,
 				4764B3A1268407C600AE471E /* TrackListItem.swift in Sources */,
@@ -644,12 +687,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Spottie/Spottie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Spottie/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Spottie/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -657,6 +701,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ljk.Spottie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Spottie/Spottie-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -666,12 +712,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Spottie/Spottie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Spottie/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Spottie/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -679,6 +726,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ljk.Spottie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Spottie/Spottie-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
