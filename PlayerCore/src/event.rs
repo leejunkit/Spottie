@@ -16,6 +16,7 @@ pub fn start_event_broadcast(spotify: Arc<Mutex<Spotify>>, queue: Arc<Queue>, b:
         let mut spotify_event_rx = spotify.lock().unwrap().get_spotify_event_channel();
         loop {
             let spotify_event = spotify_event_rx.recv().await;
+
             let queue_items = queue.queue.read().unwrap();
             let base62 = queue_items.clone().into_iter().map(|item| item.to_base62()).collect();
 
@@ -34,6 +35,8 @@ pub fn start_event_broadcast(spotify: Arc<Mutex<Spotify>>, queue: Arc<Queue>, b:
             let len = v.len();
 
             let cb = b.callback;
+            println!("at start_event_broadcast cb: {:?}", json);
+
             cb(b.ptr, ptr, len);
         }
     });

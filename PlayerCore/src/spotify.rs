@@ -25,8 +25,8 @@ pub enum PlayerState {
 pub struct SpotifyState {
     pub state: PlayerState,
     pub track_id: Option<String>,
-    pub elapsed: Option<Duration>,
-    pub since: Option<SystemTime>,
+    pub elapsed: Option<u64>,
+    pub since: Option<u64>,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -149,6 +149,10 @@ impl Spotify {
         self.player.stop();
     }
     
+    pub fn seek(&self, position_ms: u32) {
+        self.player.seek(position_ms);
+    }
+    
     pub fn toggleplayback(&self) {
         match self.get_current_status() {
             PlayerEvent::Playing(_, _) => self.pause(),
@@ -182,7 +186,7 @@ impl Spotify {
                 self.send_event(SpotifyState {
                     state: PlayerState::Paused,
                     track_id: Some(track_id.to_base62()),
-                    elapsed: Some(position),
+                    elapsed: Some(position.as_secs()),
                     since: None,
                 });
             }
@@ -194,7 +198,7 @@ impl Spotify {
                     state: PlayerState::Playing,
                     track_id: Some(track_id.to_base62()),
                     elapsed: None,
-                    since: Some(playback_start),
+                    since: Some(playback_start.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs()),
                 });
             }
             PlayerEvent::Stopped | PlayerEvent::FinishedTrack => {

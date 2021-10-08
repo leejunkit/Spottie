@@ -1,11 +1,11 @@
 use std::{env, fs};
 use std::sync::mpsc;
-use std::os::raw::c_char;
+use std::os::raw::{c_char};
 use tokio::runtime::Runtime;
 use tokio::net::UnixListener;
 use tokio_stream::wrappers::UnixListenerStream;
 use warp::Filter;
-use std::ffi::{c_void, CString};
+use std::ffi::{c_void, CString, CStr};
 
 mod api;
 mod sink_wrapper;
@@ -15,7 +15,11 @@ mod queue;
 mod event;
 
 #[no_mangle]
-pub extern "C" fn librespot_init(user_data: *const c_void, event_callback: extern fn(*const c_void, *mut u8, usize)) {
+pub extern "C" fn librespot_init(socket_path: *const c_char, user_data: *const c_void, event_callback: extern fn(*const c_void, *mut u8, usize)) {
+    // validate socket_path
+    let p = unsafe { CStr::from_ptr(socket_path) };
+    let p = p.to_str().unwrap();
+
     let rt = Runtime::new().unwrap();
     rt.block_on(async move {
         let (sink_reload_tx, sink_reload_rx) = mpsc::sync_channel(1);
@@ -27,24 +31,32 @@ pub extern "C" fn librespot_init(user_data: *const c_void, event_callback: exter
             callback: event_callback,
         });
 
-        let mut dir = env::temp_dir();
-        dir.push("warp.sock");
-        println!("Temporary directory: {}", &dir.display());
+        println!("Socket Path: {}", &p);
 
-        fs::remove_file(&dir).ok();
+        fs::remove_file(&p).ok();
 
-        let listener = UnixListener::bind(dir).unwrap();
+        let listener = UnixListener::bind(p).unwrap();
         let incoming = UnixListenerStream::new(listener);
 
         let routes = api::filters::get_token(spotify.clone())
             .or(api::filters::play(queue.clone()))
             .or(api::filters::toggle_playback(queue.clone()))
             .or(api::filters::next(queue.clone()))
-            .or(api::filters::previous(queue.clone()));
+            .or(api::filters::previous(queue.clone()))
+            .or(api::filters::seek(spotify.clone()));
 
-        warp::serve(routes)
-            .run_incoming(incoming)
-            .await;
+        let fut = warp::serve(routes).run_incoming(incoming);
+
+        // trigger a PlayerCore state update back to the frontend
+        {
+            let s = spotify.clone();
+            let mut spotify = s.lock().unwrap();
+            let current_status = spotify.get_current_status();
+            println!("current status {:?}", current_status);
+            spotify.update_status(current_status);
+        }        
+        
+        fut.await;
     });
 }
 
