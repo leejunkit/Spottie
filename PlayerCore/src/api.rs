@@ -144,8 +144,7 @@ mod handlers {
     pub async fn get_token(spotify: Arc<Mutex<Spotify>>) -> Result<impl Reply, Infallible> {
         let session = spotify.lock().unwrap().get_session().clone();
         let client_id = "d420a117a32841c2b3474932e49fb54b";
-        //let scopes = "user-read-private,playlist-read-private,playlist-read-collaborative,playlist-modify-public,playlist-modify-private,user-follow-modify,user-follow-read,user-library-read,user-library-modify,user-top-read,user-read-recently-played";
-        let scopes = ["ugc-image-upload", "playlist-read-collaborative", "playlist-modify-private", "playlist-modify-public", "playlist-read-private", "user-read-playback-position", "user-read-recently-played", "user-top-read", "user-modify-playback-state", "user-read-currently-playing", "user-read-playback-state", "user-read-private", "user-read-email", "user-library-modify", "user-library-read", "user-follow-modify", "user-follow-read", "streaming", "app-remote-control"].join(",");
+        let scopes = "ugc-image-upload,playlist-read-collaborative,playlist-modify-private,playlist-modify-public,playlist-read-private,user-read-playback-position,user-read-recently-played,user-top-read,user-modify-playback-state,user-read-currently-playing,user-read-playback-state,user-read-private,user-read-email,user-library-modify,user-library-read,user-follow-modify,user-follow-read,streaming,app-remote-control";
         let token = keymaster::get_token(&session, client_id, &scopes).await.unwrap();
         let proxy = TokenProxy {
             access_token: token.access_token,
