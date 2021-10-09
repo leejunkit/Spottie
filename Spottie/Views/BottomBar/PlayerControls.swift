@@ -6,42 +6,67 @@
 //
 
 import SwiftUI
+import Combine
 
-struct PlayerControls<M: PlayerStateProtocol>: View {
-    @EnvironmentObject var viewModel: M
-
+struct PlayerControls: View {
+    @StateObject var viewModel = ViewModel()
     var body: some View {
         VStack {
             HStack(spacing: 28) {
+                /*
                 ShuffleButton(
                     isShuffling: viewModel.isShuffling,
                     toggle: viewModel.toggleShuffle
                 )
+                */
                 PreviousTrackButton(
-                    previousTrackButtonTapped: viewModel.previousTrack
+                    previousTrackButtonTapped: {
+                        Task.init {
+                            let _ = await viewModel.playerCore.previous()
+                        }
+                    }
                 )
                 PlayPauseButton(
-                    playPauseButtonTapped: viewModel.togglePlayPause,
+                    playPauseButtonTapped: {
+                        Task.init {
+                            let _ = await viewModel.playerCore.togglePlayback()
+                        }
+                    },
                     isPlaying: viewModel.isPlaying
                 )
                 NextTrackButton(
-                    nextTrackButtonTapped: viewModel.nextTrack
+                    nextTrackButtonTapped: {
+                        Task.init {
+                            let _ = await viewModel.playerCore.next()
+                        }
+                    }
                 )
+                /*
                 RepeatButton(
                     repeatMode: viewModel.repeatMode,
                     onRepeatButtonTapped: viewModel.cycleRepeatMode
                 )
+                 */
             }
             TrackProgressSlider()
                 .padding([.leading, .trailing])
         }
     }
-}
-
-struct PlayerControls_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerControls<FakePlayerViewModel>()
-            .environmentObject(FakePlayerViewModel())
+    
+    class ViewModel: ObservableObject {
+        @Published var isPlaying = false
+        
+        @Inject var playerCore: PlayerCore
+        private var cancellables = [AnyCancellable]()
+        init() {
+            playerCore
+                .statePublisher
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] state in
+                    guard let self = self else { return }
+                    guard let state = state else { return }
+                    self.isPlaying = state.player.state == .playing
+                }.store(in: &cancellables)
+        }
     }
 }
-

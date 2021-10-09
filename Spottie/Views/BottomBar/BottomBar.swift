@@ -11,13 +11,9 @@ struct BottomBar<M: PlayerStateProtocol>: View {
     @EnvironmentObject var viewModel: M
     var body: some View {
         HStack(spacing: 40) {
-            NowPlaying(
-                trackName: viewModel.trackName,
-                artistName: viewModel.artistName,
-                artworkURL: viewModel.artworkURL
-            )
+            NowPlaying()
             .frame(width: 240, alignment: .leading)
-            PlayerControls<M>()
+            PlayerControls()
             VolumeSlider(
                 volumePercent: viewModel.volumePercent,
                 onVolumeChanged: viewModel.setVolume

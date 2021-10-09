@@ -10,8 +10,10 @@ import Combine
 
 @main
 struct SpottieApp: App {
+    // register dependencies into the container
+    @Provider var playerCore = PlayerCore()
     init() {
-        
+        DependencyInjector.register(dependency: SpotifyWebAPI(playerCore: playerCore))
     }
     
     @StateObject private var playerViewModel = PlayerViewModel(EventBroker())

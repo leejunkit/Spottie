@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct Home: View {
-    @ObservedObject var viewModel: ViewModel = ViewModel()
+    @ObservedObject var viewModel = ViewModel()
     
     // search
     @State private var searchText = ""
@@ -84,12 +84,21 @@ struct Home: View {
 
 extension Home {
     class ViewModel: ObservableObject {
+        @Inject var webAPI: SpotifyWebAPI
         @Published var rowViewModels: [CarouselRow.ViewModel] = []
         private var cancellables = [AnyCancellable]()
         
         init() {
-            SpotifyAPI.getPersonalizedRecommendations().sink { _ in } receiveValue: { response in
-                let recommendationGroups = response!.content.items
+            // TODO: fix broken API call here for personalized recommendations
+            
+            Task.init {
+                let result = await webAPI.getPersonalizedRecommendations()
+                guard case let .success(response) = result else {
+                    // TODO: handle errors here
+                    return
+                }
+                
+                let recommendationGroups = response.content.items
                 self.rowViewModels = recommendationGroups.map { group in
                     if group.id.hasPrefix("podcast") {
                         return CarouselRow.ViewModel(
@@ -154,7 +163,7 @@ extension Home {
                     
                     return vm
                 }
-            }.store(in: &cancellables)
+            }
         }
         
         func load(_ uri: String) {
