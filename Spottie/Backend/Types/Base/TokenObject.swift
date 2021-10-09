@@ -8,5 +8,14 @@
 import Foundation
 
 struct TokenObject: Decodable {
-    let token: String
+    let accessToken: String
+    let tokenType: String
+    let expiresIn: Int
+    let scope: [String]
+    
+    var authHeader: String {
+        get {
+            return "\(tokenType) \(accessToken)"
+        }
+    }
 }

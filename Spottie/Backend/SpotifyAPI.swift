@@ -8,6 +8,10 @@
 import Foundation
 import Combine
 
+enum APIError: Error {
+    case unknown
+}
+
 enum SpotifyAPI {
     static let client = HTTPClient()
     static let base = URL(string: "http://localhost:24879")!
@@ -160,8 +164,8 @@ extension SpotifyAPI {
         return
             token("user-read-private")
             .flatMap { tokenObj -> AnyPublisher<HTTPClient.Response<SearchResultsResponse?>, Error> in
-                let token = tokenObj!.token
-                req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                let token = "\(tokenObj!.tokenType) \(tokenObj!.accessToken)"
+                req.addValue(token, forHTTPHeaderField: "Authorization")
                 return client.run(req, decoder)
             }
             .map(\.value)

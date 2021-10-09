@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19197" systemVersion="21A5304g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CachedTrack" representedClassName="CachedTrack" syncable="YES" codeGenerationType="class">
+        <attribute name="albumName" optional="YES" attributeType="String"/>
+        <attribute name="artists" optional="YES" attributeType="String"/>
+        <attribute name="durationMs" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SpotifyImage"/>
+        <fetchIndex name="byId">
+            <fetchIndexElement property="id" type="Binary" order="descending"/>
+        </fetchIndex>
+    </entity>
+    <entity name="EtagCachedResponse" representedClassName="EtagCachedResponse" syncable="YES" codeGenerationType="class">
+        <attribute name="etag" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="Binary"/>
+        <fetchIndex name="byUrl">
+            <fetchIndexElement property="url" type="Binary" order="descending"/>
+        </fetchIndex>
+    </entity>
+    <entity name="SpotifyImage" representedClassName="SpotifyImage" syncable="YES" codeGenerationType="class">
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="CachedTrack" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="SpotifyImage" positionX="-27" positionY="54" width="128" height="74"/>
+        <element name="EtagCachedResponse" positionX="0" positionY="90" width="128" height="74"/>
+    </elements>
+</model>

@@ -9,13 +9,14 @@ import Foundation
 import Combine
 
 class EventBroker : ObservableObject {
-    private let websocketClient = WebsocketClient(url: URL(string: "ws://localhost:24879/events")!)
+//    private let websocketClient = WebsocketClient(url: URL(string: "ws://localhost:24879/events")!)
     private var cancellables = [AnyCancellable]()
     private let decoder = JSONDecoder()
     
     let onEventReceived = PassthroughSubject<SpotifyEvent, Never>()
     
     init() {
+        /*
         websocketClient
             .onMessageReceived
             .receive(on: DispatchQueue.main)
@@ -32,5 +33,6 @@ class EventBroker : ObservableObject {
                 print(error)
             }
         }.store(in: &cancellables)
+         */
     }
 }
