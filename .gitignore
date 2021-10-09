@@ -91,3 +91,5 @@ iOSInjectionProject/
 
 # Rust
 PlayerCore/target/**
+Spottie/PlayerCore/libspottie_player_core.*
+
