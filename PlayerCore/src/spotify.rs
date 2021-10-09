@@ -50,7 +50,8 @@ impl Spotify {
     pub async fn new(sink_rx: Receiver<()>) -> Arc<Mutex<Spotify>> {
         let session_config = SessionConfig::default();
         let player_config = PlayerConfig::default();
-        let credentials = Credentials::with_password("***REMOVED***", "***REMOVED***");
+        // TODO: use env var for this, to be specified in the Xcode side somehow?
+        let credentials = Credentials::with_password("", "");
 
         println!("Connecting...");
         let session = Session::connect(session_config, credentials, None)
